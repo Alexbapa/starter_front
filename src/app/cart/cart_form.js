@@ -300,12 +300,12 @@ export const CartForm = () => {
       background: "white",
       textTransform:"none",
       paddingLeft:"10px",
-      borderColor: state.isFocused ? "#c25885":"#cccccc",
+      borderColor: state.isFocused ? "#0033A0":"#cccccc",
       boxShadow: "0",
       "&:hover": {
         ...base,
         boxShadow: "0",
-        borderColor: "#c25885 !important",
+        borderColor: "#0033A0 !important",
       }
     }),
     singleValue: (base, state) => ({
@@ -319,7 +319,7 @@ export const CartForm = () => {
     option: (base, state) => {
       return {
         ...base,
-        background: state.isSelected ? "#c25885" : state.isFocused ? "#c2588550": "transparent",
+        background: state.isSelected ? "#0033A0" : state.isFocused ? "#0033A050": "transparent",
         color: state.isSelected ? "white" : "grey",
       };
     },

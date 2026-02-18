@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const clienteAxios = axios.create({
- baseURL: "https://apinew.mellfashionboutique.com"
+ baseURL: "https://walrus-app-qj647.ondigitalocean.app/"
  //baseURL: "http://localhost:4000"
 })
 

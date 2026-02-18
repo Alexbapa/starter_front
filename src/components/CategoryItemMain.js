@@ -2,34 +2,33 @@
 
 import Link from "next/link";
 
-export const CategoryItemMain = ({item1, index}) => {
-
+export const CategoryItemMain = ({ item1 }) => {
   return (
-    <div 
-    key={index} 
-    className="grid-item w_50">
-    <Link
-      className="category_item_1"
-      href={`/categories/Todas/${item1.nombre.trim().replace(/\s/g,"-")}`}
-    >
-      <img
-        src={`${item1.imagen}`}
-        alt={`${item1.imagen}`}
-        unoptimized={true}
-      />
-      <span className="item_title">
-        {item1.nombre}{" "}
-        <i
-          className="fas fa-angle-right"
+    <div className="col-12 col-md-4 mb-4">
+      <Link
+        className="category_item_1 d-block position-relative"
+        href={`/categories/Todas/${item1.nombre.trim().replace(/\s/g, "-")}`}
+      >
+        <img
+          src={item1.imagen}
+          alt={item1.nombre}
+          className="img-fluid w-100"
+        />
+
+        <span
+          className="item_title position-absolute text-white"
           style={{
-            position: "absolute",
             bottom: "20px",
-            right: "30px",
+            left: "20px",
+            fontSize: "20px",
+            fontWeight: "600",
           }}
-        ></i>
-      </span>
-    </Link>
-  </div>
-  )
-}
+        >
+          {item1.nombre}
+        </span>
+      </Link>
+    </div>
+  );
+};
+
 

@@ -92,17 +92,6 @@ const AllCategories = async ({ params }) => {
                       />
                     </div>
                   </li>
-
-                  <li>
-                    <h4 className="item_title text-uppercase">Marca</h4>
-                    <div className="select_option clearfix">
-                      <BrandSelector
-                        brand_name={params.marca.replace("-", " ")}
-                        category_name={params.category_name.replace("-", " ")}
-                        allBrands={allBrands}
-                      />
-                    </div>
-                  </li>
                 </ul>
               </form>
             </div>

@@ -62,7 +62,7 @@ const Page = async () => {
               <div className="container width_desktop">
                 <div className="row justify-content-end">
                   <div className="col-8 col-lg-5 col-md-6 col-sm-8">
-                    <div className="slider_content text-white">
+                    <div className="slider_content text-white text-center">
                       {/*
                   <h3 className="small_title" data-animation="fadeInUp2" data-delay=".2s">Para cualquier industria</h3>
                   */}
@@ -70,8 +70,9 @@ const Page = async () => {
                         className="big_title text-pink fadeInCustom"
                         style={{lineHeight:".75"}}
                       >
-                        <span style={{ fontFamily: "Margarita" }}>Estilo</span>{" "}
-                        <span className="text-brown">a tu alcance</span>
+                        <span style={{ fontFamily: "Montserrat" }}>Domina</span>{" "}
+                        <br></br>
+                        <span className="text-brown">las calles</span>
                       </h1>
                       {/*
                   <p className="text-brown" data-animation="fadeInUp2" data-delay=".6s">
@@ -93,33 +94,27 @@ const Page = async () => {
           </div>
         </section>
 
-        <div className="category_section sec_space_large"  >
+        <div className="category_section sec_space_large" style={{background:"#080808",}} >
           <div className="container width_desktop">
             
             <div className="row align-items-center">
               <div className="col ">
-                <div className="section_title" style={{paddingBottom:"0px"}}>
-                  <h2 className="title_text text-pink-light fontPlantagenet" >
-                  Lo más nuevo de nuestra colección
+                <div className="section_title" style={{paddingBottom:"0px",}}>
+                  <h2 className="title_text text-pink-light fontPlantagenet" style={{color:"#fff",}} >
+                  Lo más nuevo
                   </h2>
                 </div>
               </div>
             </div>  
 
-            <div className="grid category_masonry_1 clearfix">
-              <div className="grid-sizer"></div>
+          <div className="row">
+             {categories &&
+               categories.slice(0, 3).map((item1, index) => (
+               <CategoryItemMain key={index} item1={item1} />
+              ))}
+          </div>
 
-              {categories &&
-                categories
-                  .filter((element) => element.indexViewUp === "Sí")
-                  .map((item1, index) => {
-                    return index === 0 ? (
-                      <CategoryItemMain item1={item1} index={index}/>
-                    ) : (
-                      <CategoryItemSmall item1={item1} index={index}/>
-                    );
-                  })}
-            </div>
+
           </div>
         </div>
 
@@ -127,36 +122,45 @@ const Page = async () => {
           <div className="container width_desktop">
             <div className="row justify-content-end">
               <div className="col col-md-6 col-sm-8">
-                <div className="deals_content">
-                  <h2 className="bg-white text-uppercase">
-                    Bienvenida a la boutique
-                  </h2>
-                  <h3 className="text-pink text-uppercase">
-                    OBTÉN EL<span>10%</span>
-                  </h3>
-                  <p>Por tiempo limitado</p>
-                  <a
-                    data-bs-toggle="modal"
-                    href="#cod_desc"
-                    className="btn btn_primary btn_rounded"
-                  >
-                    OBTÉN CÓDIGO
-                  </a>
-                </div>
-              </div>
+                 <div className="slider_content text-white text-center">
+                      {/*
+                  <h3 className="small_title" data-animation="fadeInUp2" data-delay=".2s">Para cualquier industria</h3>
+                  */}
+                      <h1
+                        className="big_title text-pink fadeInCustom"
+                        style={{lineHeight:".75"}}
+                      >
+                        <span
+  style={{
+    fontFamily: "Montserrat",
+    fontSize: "70px",
+    fontWeight: "800"
+  }}
+>Regresamos</span>{" "}
+                        <br></br>
+                        <span className="text-brown" style={{
+    fontFamily: "Montserrat",
+    fontSize: "70px",
+    fontWeight: "800"
+  }}>a casa</span>
+                      </h1>
+                    </div>
+              </div>  
             </div>
           </div>
         </section>
 
-        <section className="product_section sec_space_large" style={{paddingBottom:"0px"}}>
+        <section className="product_section sec_space_large" style={{paddingBottom:"0px", background:"#000"}}>
           <div className="container width_desktop">
             <div className="row align-items-center">
               <div className="col ">
                 <div className="section_title">
-                  <h2 className="title_text text-pink-light fontPlantagenet" >
-                    Tendencia a gran precio
+                  <h2 className="title_text text-pink-light fontPlantagenet" style={{
+    color: "#ffff",
+  }} >
+                    El StreetWare de México
                   </h2>
-                  <p className="mb-0">Contamos con más de 1000 opciones</p>
+                  <p className="mb-0">Elige tu estilo</p>
                 </div>
               </div>
 
@@ -320,70 +324,44 @@ const Page = async () => {
         </section>
 
 
-        <section className="product_section">
-          <div className="container width_desktop">
-            <div className="row align-items-center">
-              <div className="col ">
-                <div className="section_title" style={{paddingBottom:"0px"}}>
-                  <h2 className="title_text text-pink-light fontPlantagenet" >
-                  Las preferidas de todas
-                  </h2>
-                </div>
-              </div>
-            </div>  
-          </div>
-        </section>
+      {/*
+<section className="product_section">
+  <div className="container width_desktop">
+    <div className="row align-items-center">
+      <div className="col ">
+        <div className="section_title" style={{paddingBottom:"0px"}}>
+          <h2 className="title_text text-pink-light fontPlantagenet">
+            Las preferidas de todas
+          </h2>
+        </div>
+      </div>
+    </div>  
+  </div>
+</section>
 
-        <section className="feature_section">
-          <div className="container-fluid">
-            <div className="row no_gap">
-              {categories &&
-                categories
-                  .filter((element) => element.indexViewDown === "Sí")
-                  .map((item1, index) => {
-                    return index < 3 ? (
-                      <div
-                        key={index}
-                        className="col col-lg-4 col-md-4 col-sm-12"
-                      >
-                        <div className="feature_item_1">
-                          <Link
-                            className="item_image"
-                            href={`/categories/Todas/${item1.nombre.trim().replace(/\s/g,"-")}`}
-                          >
-                            <img
-                              src={`${item1.imagen}?v=${Date.now()}`}
-                              alt={`${item1.imagen}`}
-                              style={{ minWidth: "100%" }}
-                              unoptimized={true}
-                            />
-                          </Link>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <Link href={`/categories/Todas/${item1.nombre.trim().replace(/\s/g,"-")}`}>
-                                {item1.nombre}
-                              </Link>
-                            </h3>
-                            <Link
-                              href={`/categories/Todas/${item1.nombre.trim().replace(/\s/g,"-")}`}
-                              className="item_badge"
-                            >
-                              VER{" "}
-                              <i
-                                className="fas fa-angle-right"
-                                style={{ marginLeft: "10px" }}
-                              ></i>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <></>
-                    );
-                  })}
-            </div>
-          </div>
-        </section>
+<section className="feature_section">
+  <div className="container-fluid">
+    <div className="row no_gap">
+      ...
+    </div>
+  </div>
+</section>
+*/}
+
+<section className="launch_section">
+  <div className="container text-center">
+    <h2 className="launch_title">
+      NUEVA COLECCIÓN
+    </h2>
+    <p className="launch_subtitle">
+      Descubre lo nuevo de Starter
+    </p>
+    <Link href="/shop" className="btn btn_primary btn_rounded">
+      VER COLECCIÓN
+    </Link>
+  </div>
+</section>
+
       </main>
     </div>
   );

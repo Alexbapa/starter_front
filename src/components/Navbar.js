@@ -5,7 +5,8 @@ import Link from 'next/link'
 import clienteAxios from "../config/axios";
 
 import logo from "../images/logo/logo-mell.png";
-
+import logoStarter from "../images/logo/Logo_Starter_Redondo.png";
+import logoStarterDos from "../images/logo/Logo_Starter_Redondo_1.png";
 
 import { NavbarOptions } from "./navbarOptions"
 
@@ -44,7 +45,7 @@ export async function Navbar() {
   
     <header className="header_section header_1">
         <div className="container width_desktop">
-          <div className="header_top">
+          <div className=" header_top">
             <p className="welcome_text">{slogan}</p>
             <ul className="header_icons_list ul_li">
               <li>
@@ -63,7 +64,7 @@ export async function Navbar() {
 
           
               <Link className="brand_link" href="/" style={{display:"block"}}>
-              <Image className="logo_size logo_m logo_position_float" src={logo} alt={logo} />
+              <Image className="logo_size logo_m logo_position_float" src={logoStarter} alt={logoStarter} />
               </Link>
           
 

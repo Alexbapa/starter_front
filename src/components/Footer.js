@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import clienteAxios from "../config/axios";
-
+import logoStarter from "../images/logo/Logo_Starter_Redondo.png";
 import logo_footer from "../images/logo/logo-mell-footer.png";
 import Link from 'next/link'
 
@@ -40,15 +40,15 @@ export async function Footer() {
                     <Link className="brand_link" href="/">
                       <Image
                         style={{ height: "100px", width: "100px" }}
-                        src={logo_footer}
-                        alt={logo_footer}
+                        src={logoStarter}
+                        alt={logoStarter}
                       />
                     </Link>
                   </div>
                   <p>
-                    Boutique Fashionista
+                  
                     <br />
-                    Av. Insurgentes #24, Jiutepec, Morelos
+                    
                   </p>
 
                   {/*
@@ -151,8 +151,8 @@ export async function Footer() {
           </div>
         </div>
         <div className="footer_bottom">
-          <div className="container width_desktop">
-            <p className="copyright_text text-center">© Todos los derechos reservados Mell Fashion Boutique desarrollado por <a href="https://gomalab.com" target="_blank" style={{color: "#c25885"}}>GomaLab</a>
+          <div className="">
+            <p className="copyright_text text-center">© Todos los derechos reservados Satarter México desarrollado por <a href="https://gomalab.com" target="_blank" style={{color: "#0033A0"}}>GomaLab</a>
             </p>
           </div>
         </div>

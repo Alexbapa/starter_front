@@ -44,7 +44,7 @@ export const BtnCategoria = ({categories}) => {
   return (
     <Link
       key={activeRoute}
-      className="btn btn_primary btn_rounded"
+      className="btn  btn_rounded especial"
       href={activeRoute}
       style={{ fontSize: "1.2rem", marginTop: "25px", minWidth:"20vw" }}
     >

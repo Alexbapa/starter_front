@@ -43,7 +43,7 @@ export const metadata = {
   keywords: seoData.words,
   author: "Goma Lab", 
   alternates: {
-    canonical: "https://www.mellfashionboutique.com",
+    canonical: "https://www.starter.com.mx",
   },
 };
 
