@@ -20,14 +20,17 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/store/cart.ts", "src/app/categories/[marca]/[category_name]/page.js"  ],
+    "**/*.tsx",
+    "src/store/cart.ts",
+    "src/app/categories/[marca]/[category_name]/page.js"
+  ],
   "exclude": [
     "node_modules"
   ]
