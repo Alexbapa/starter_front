@@ -37,19 +37,14 @@ export const CartForm = () => {
   const [datos_entrega_telefono, setDatosEntregaTelefono] = useState();
   const [agree, setAgree] = useState(false);
 
-  const [formaEntrega, setFormaEntrega] = useState();
+  const [formaEntrega, setFormaEntrega] = useState('Envío a Domicilio');
 
   const [costo_envio, setCostoEnvio] = useState(0);
 
   const [viewMPbutton, setViewMPbutton] = useState(false);
   const [viewContinuebutton, setViewContinuebutton] = useState(true);
 
-  const allDeliveryTypes = [
-    {"value":"Directo en Tienda", "label": "Directo en Tienda"},
-    {"value":"Paquetería fuera de Cuernavaca", "label": "Paquetería fuera de Cuernavaca"},
-    {"value":"Envío por Didi dentro de Morelos", "label": "Envío por Didi dentro de Morelos"},
-    {"value":"Entrega directa Jiutepec, Jojutla, Cuernavaca", "label": "Entrega directa Jiutepec, Jojutla, Cuernavaca"},
-  ];
+  const allDeliveryTypes = [];
 
   
   const mostrarMensaje = (mensaje) => {
@@ -62,13 +57,11 @@ export const CartForm = () => {
 
   const mostrarMPbutton = () => {
     //validamos campos
-    if(formaEntrega === "" || formaEntrega === undefined) {
-      mostrarMensaje("Debes seleccionar una forma de entrega"); 
-    }else if(costo_envio === "" || costo_envio === undefined) {
+    if(costo_envio === "" || costo_envio === undefined) {
       mostrarMensaje("Debes escribir el costo de envío");    
     }else if(datos_entrega_nombre === "" || datos_entrega_nombre === undefined) {
       mostrarMensaje("Debes escribir el nombre en datos de entrega");    
-    }else if(formaEntrega.value != 'Directo en Tienda' && datos_entrega_direccion === "" || formaEntrega.value != 'Directo en Tienda' && datos_entrega_direccion === undefined) {
+    }else if(datos_entrega_direccion === "" || datos_entrega_direccion === undefined) {
       mostrarMensaje("Debes escribir la direccion en datos de entrega");    
     }else if(datos_entrega_correo === "" || datos_entrega_correo === undefined) {
       mostrarMensaje("Debes escribir el correo en datos de entrega");    
@@ -143,7 +136,7 @@ export const CartForm = () => {
             setDatosEntregaDireccion(null);
             setDatosEntregaCorreo(null);
             setDatosEntregaTelefono(null);
-            setFormaEntrega(null);
+            setFormaEntrega("Envío a Domicilio");
 
            //mostrarAviso("compra realizada");
            
@@ -425,7 +418,7 @@ export const CartForm = () => {
 
                     <div className="form_item">
 
-                    {/*forma entrega*/}
+                    {/*forma entrega
                     <Select
                      instanceId={'formaEntrega'}
                      styles={customStyles}
@@ -435,6 +428,7 @@ export const CartForm = () => {
                      value={formaEntrega}
                      isSearchable={false}
                     ></Select>
+                    */}
 
                    
 
