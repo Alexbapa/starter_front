@@ -8,11 +8,11 @@ import useInterval from 'use-interval'
 
 export const BtnCategoria = ({categories}) => {
 
-    const [activeCategory, setActiveCategory] = useState("Vestidos");
+    const [activeCategory, setActiveCategory] = useState("PLAYERAS");
 
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
     
-    const [activeRoute, setActiveRoute] = useState("/categories/Todas/Vestidos");
+    const [activeRoute, setActiveRoute] = useState("/categories/Todas/Playeras");
     
 
 
