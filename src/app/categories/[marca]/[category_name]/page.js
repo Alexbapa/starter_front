@@ -58,7 +58,7 @@ const AllCategories = async ({ params }) => {
     <>
       <main>
         <section
-          className="breadcrumb_section" >
+          className="breadcrumb_section"  >
           <div className="container">
             <div className="row">
               <div className="col col-lg-6">

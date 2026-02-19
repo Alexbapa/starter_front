@@ -56,7 +56,13 @@ const Page = async () => {
         <section className="slider_section main_slider_1">
           <div
             className="main_slider"
-            data-slick='{"arrows": false, "dots": false}'
+           data-slick='{
+    "arrows": true, 
+    "dots": true, 
+    "autoplay": true, 
+    "autoplaySpeed": 5000,
+    "infinite": true
+  }'
           >
             <div className="slider_item">
               <div className="container width_desktop">
@@ -70,7 +76,7 @@ const Page = async () => {
                         className="big_title text-pink fadeInCustom"
                         style={{lineHeight:".75"}}
                       >
-                        <span style={{ fontFamily: "Montserrat" }}>Domina</span>{" "}
+                        <span style={{ paddingBottom: "15px", display: "inline-block" }}>DOMINA</span>
                         <br></br>
                         <span className="text-brown">las calles</span>
                       </h1>
@@ -119,7 +125,7 @@ const Page = async () => {
         </div>
 
         <section className="fullwidth_deals_1" style={{backgroundAttachment:"fixed", backgroundPositionX:"30%"}}>
-          <div className="container width_desktop">
+          <div className="container width_desktop main_slider_1">
             <div className="row justify-content-end">
               <div className="col col-md-6 col-sm-8">
                  <div className="slider_content text-white text-center">
@@ -129,20 +135,17 @@ const Page = async () => {
                       <h1
                         className="big_title text-pink fadeInCustom"
                         style={{lineHeight:".75"}}
-                      >
+                      >  
                         <span
   style={{
-    fontFamily: "Montserrat",
-    fontSize: "70px",
-    fontWeight: "800"
+   paddingBottom: "15px", display: "inline-block"
   }}
->Regresamos</span>{" "}
+>REGRESAMOS</span>{" "}
                         <br></br>
                         <span className="text-brown" style={{
-    fontFamily: "Montserrat",
-    fontSize: "70px",
-    fontWeight: "800"
-  }}>a casa</span>
+    
+    
+  }}>A CASA</span>
                       </h1>
                     </div>
               </div>  

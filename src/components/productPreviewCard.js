@@ -31,7 +31,7 @@ export const ProductPreviewCard = ({ item }) => {
   const [cantidad, setCantidad] = useState(1);
 
   const currentPageUrl =
-    "https://mellfashionboutique.com/shop_details/" +
+    "https://starter.com.mx/shop_details/" +
     item.categoria +
     "/" +
     item.nombre.trim().replace(/\s/g, "-") +
@@ -340,9 +340,6 @@ export const ProductPreviewCard = ({ item }) => {
           <div className="shop_price">
             <span className="sale_price">$ {item.precio}</span>
           </div>
-          <ul className="shop_category ul_li">
-            <li>{item.marca}</li>
-          </ul>
         </div>
       </div>
       <Modal

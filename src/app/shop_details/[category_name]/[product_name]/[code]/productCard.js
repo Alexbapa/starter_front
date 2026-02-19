@@ -213,7 +213,7 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
                 {producto && producto.categoria}
               </h2>
               <h3 className="item_title" style={{fontFamily:"Plantagenet"}}>{producto && producto.nombre}</h3>
-              <h4>{producto && producto.marca}</h4>
+           
               <div className="item_price">
                 <span className="sale_price">
                   $ {producto && producto.precio}

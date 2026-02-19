@@ -29,17 +29,7 @@ const Contact = async () => {
         <section className="contact_section sec_space_small p-4">
           <div className="container">
             <div className="contact3_wrap">
-              <div className="row clearfix pt-3">
-                <iframe
-                  title="Map"
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3775.0506672214187!2d-99.1756667!3d18.8848333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTjCsDUzJzA1LjQiTiA5OcKwMTAnMzIuNCJX!5e0!3m2!1ses!2smx!4v1702410025817!5m2!1ses!2smx"
-                  style={{ width: "100%", height: "450px", border: "0" }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-
+           
               <div className="row">
                 <div className="col">
                   <div className="contact_form3">
@@ -49,16 +39,9 @@ const Contact = async () => {
                 <div className="col">
                   <div className="contact_form3">
                     <div className="info_list">
-                      <h4>Nuestra ubicación</h4>
-                      <ul className="ul_li_block">
-                        <li>Av. Insurgentes #24,</li>
-                        <li>Jiutepec, Morelos</li>
-                      </ul>
-                    </div>
-                    <div className="info_list">
                       <h4>Contáctanos</h4>
                       <ul className="ul_li_block">
-                        <li>ecommerce@mellfashionboutique.com</li>
+                        <li>contacto@starter.com.x</li>
                       </ul>
                     </div>
                     <div className="social_wrap">
@@ -66,7 +49,7 @@ const Contact = async () => {
                       <ul className="social_border ul_li">
                         <li>
                           <a
-                            href="https://www.facebook.com/fashionistaa.boutique"
+                            href="https://www.facebook.com/Startermex"
                             target="_blank"
                             rel="noreferrer"
                           >
