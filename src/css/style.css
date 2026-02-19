@@ -119,6 +119,11 @@ a {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
    font-family: "Anton", sans-serif !important;
 }
+
+.item_title{
+  font-family: "Anton", sans-serif !important;
+  text-transform: uppercase;
+}
 a:active, a:focus, a:hover, a:visited {
   outline: 0;
   text-decoration: none;
@@ -8448,7 +8453,7 @@ hr {
   margin-bottom: 5px;
 }
 .shop_layout_1 .shop_title > a {
-  color: #0033A0;
+  color: #fff;
   font-size: 20px;
   font-weight: 600;
   font-family: "Plantagenet";
