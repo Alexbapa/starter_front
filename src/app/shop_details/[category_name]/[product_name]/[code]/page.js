@@ -17,11 +17,11 @@ return  {
     openGraph: {
         title: params.product_name,
         description: params.category_name,
-        url: `https://mellfashionboutique.com/shop_details/${params.category_name}/${params.product_name}/${params.code}`,
-        siteName: 'Mell Fashion Boutique',
+        url: `https://starter.com.mx/shop_details/${params.category_name}/${params.product_name}/${params.code}`,
+        siteName: 'Starter',
         images: [
           {
-            url: `http://agencianuba.com/mell_front_images/productos/${params.code}.jpg`, 
+            url: `http://agencianuba.com/starter_front_images/productos/${params.code}.jpg`, 
             width: 400,
             height: 600,
           },

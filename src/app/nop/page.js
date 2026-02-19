@@ -48,7 +48,7 @@ const Aviso = async () => {
                 <div style={{ padding: "30px 0px" }}>
                   <p>
                     De acuerdo a lo Previsto en la Ley Federal de Protección de
-                    Datos Personales, declara Mell Fashion Boutique, ser una
+                    Datos Personales, declara Starter, ser una
                     empresa legalmente constituida de conformidad con las leyes
                     mexicanas y como responsable del tratamiento de sus datos
                     personales, hace de su conocimiento que la información de
@@ -95,20 +95,20 @@ const Aviso = async () => {
                   <p>
                     Área de Privacidad encargada de la seguridad de datos
                     personales en el Teléfono (55) 19914185, o al correo
-                    electrónico: contacto@mellfashionboutique.com
+                    electrónico: contacto@starter.com.mx
                   </p>
                   <p>
                     A través de estos canales usted podrá actualizar sus datos y
                     especificar el medio por el cual desea recibir información,
                     ya que, en caso de no contar con esta especificación de su
-                    parte, Mell Fashion Boutique, establecerá libremente el
+                    parte, Starter, establecerá libremente el
                     canal que considere pertinente para enviarle información.
                   </p>
                   <p>
                     Este aviso de privacidad podrá ser modificado, dichas
                     modificaciones le serán oportunamente informadas a través de
                     correo electrónico, teléfono, o cualquier otro medio de
-                    comunicación que Mell Fashion Boutique, determine para tal
+                    comunicación que Starter, determine para tal
                     efecto.
                   </p>
                 </div>

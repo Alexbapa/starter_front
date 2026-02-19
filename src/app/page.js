@@ -318,7 +318,7 @@ const Page = async () => {
                 <div className="modal-body">
                   <p>
                     Utiliza este código y obtén un 10% de descuento:{" "}
-                    <strong>mell10</strong>
+                    <strong>starter10</strong>
                   </p>
                 </div>
               </div>

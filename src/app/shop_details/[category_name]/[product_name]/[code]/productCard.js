@@ -43,7 +43,7 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
   }
 
   const currentPageUrl =
-    "https://mellfashionboutique.com/shop_details/" +
+    "https://starter.com.mx/shop_details/" +
     producto.categoria +
     "/" +
     producto.nombre.trim().replace(/\s/g, "-") +

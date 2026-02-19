@@ -4,9 +4,8 @@ import Link from 'next/link'
 
 import clienteAxios from "../config/axios";
 
-import logo from "../images/logo/logo-mell.png";
+
 import logoStarter from "../images/logo/Logo_Starter_Redondo.png";
-import logoStarterDos from "../images/logo/Logo_Starter_Redondo_1.png";
 
 import { NavbarOptions } from "./navbarOptions"
 
@@ -54,10 +53,10 @@ export async function Navbar() {
                 </ul>
               </li>
               <li>
-                <a href="mailto:ecommerce@mellfashionboutique.com"><i className="fas fa-envelope"></i></a>
+                <a href="mailto:ecommerce@starter.com.mx"><i className="fas fa-envelope"></i></a>
               </li>
               <li>
-                <a href="https://mell-panel.web.app" target="_blank" rel="noreferrer" className="user_account_btn"><i className="fas fa-user"></i> Login</a>
+                <a href="https://agencianuba.com/starter_panel" target="_blank" rel="noreferrer" className="user_account_btn"><i className="fas fa-user"></i> Login</a>
               </li>
             </ul>
           </div>

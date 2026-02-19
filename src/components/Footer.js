@@ -2,7 +2,6 @@ import Image from 'next/image'
 
 import clienteAxios from "../config/axios";
 import logoStarter from "../images/logo/Logo_Starter_Redondo.png";
-import logo_footer from "../images/logo/logo-mell-footer.png";
 import Link from 'next/link'
 
 export async function Footer() {
@@ -118,8 +117,8 @@ export async function Footer() {
                       <li>
                         <p>
                           Email:{" "}
-                          <a href="mailto:ecommerce@mellfashionboutique.com">
-                            ecommerce@mellfashionboutique.com
+                          <a href="mailto:ecommerce@starter.com.mx">
+                            ecommerce@starter.com.mx
                           </a>
                         </p>
                       </li>

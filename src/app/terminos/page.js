@@ -49,11 +49,10 @@ const Terminos = async () => {
                   <h3>GENERALIDADES</h3>
 
                   <p>
-                    Esta página web es propiedad y está operado por Mell Fashion
-                    Boutique. Estos Términos establecen los términos y
+                    Esta página web es propiedad y está operado por Starter. Estos Términos establecen los términos y
                     condiciones bajo los cuales tu puedes usar nuestra página
                     web y comprar los productos ofrecidos por nosotros. Al
-                    acceder o usar la página web Mell Fashion Boutique, usted
+                    acceder o usar la página web Starter, usted
                     aprueba que ha leído, entendido y aceptado estar sujeto a
                     estos Términos.
                   </p>
@@ -62,11 +61,11 @@ const Terminos = async () => {
                     Podemos hacer actualizaciones a estos Términos y Condiciones
                     cuantas veces sea necesario por cuestiones legales o
                     reglamentarias o para permitir el óptimo funcionamiento del
-                    Sitio Web de Mell Fashion Boutique. En caso de no estar de
+                    Sitio Web de Satarter. En caso de no estar de
                     acuerdo con estos nuevos Términos y Condiciones, deberás
                     suspender el uso de nuestro Sitio Web. Si después de la
                     fecha en que los cambios entren en vigor sigues utilizando
-                    el Sitio Web de Mell Fashion Boutique, daremos por sentada
+                    el Sitio Web de Starter, daremos por sentada
                     tu aceptación y obligación a estos nuevos Términos y
                     Condiciones.
                   </p>
@@ -80,7 +79,7 @@ const Terminos = async () => {
                     registradas, marcas de servicio, derechos de autor,
                     fotografías, audio, videos, música y todos los Derechos de
                     Propiedad Intelectual relacionados con ellos, son de
-                    propiedad exclusiva de Mell Fashion Boutique. Salvo que se
+                    propiedad exclusiva de Starter. Salvo que se
                     indique explícitamente en este documento, no se considerará
                     que nada en estos Términos crea una licencia en o bajo
                     ninguno de dichos Derechos de Propiedad Intelectual, y tu
@@ -95,8 +94,7 @@ const Terminos = async () => {
                   <p>
                     Trataremos toda su información de forma confidencial y
                     solamente la utilizaremos de acuerdo con nuestra Política de
-                    privacidad. Cuando usted compre en el e-commerce de Mell
-                    Fashion Boutique, le solicitaremos que incluya sus datos
+                    privacidad. Cuando usted compre en el e-commerce de Starter, le solicitaremos que incluya sus datos
                     personales para poder identificarle, tales como su nombre,
                     dirección de correo electrónico, dirección de facturación,
                     dirección de entrega, tarjeta de crédito u otra información
@@ -109,12 +107,11 @@ const Terminos = async () => {
 
                   <p>
                     Si usted compra cualquier producto ofertado en el e-commerce
-                    de Mell Fashion Boutique, usted representa y garantiza que
+                    de Starter, usted representa y garantiza que
                     tiene 18 años de edad o más. Se obliga a pagar la totalidad
                     de los precios de cualquier compra que haga, ya sea con
                     tarjeta de crédito/débito concurrente con su orden en línea
-                    o por otro medio de pago aceptable para Mell Fashion
-                    Boutique, Usted se obliga a pagar todos los impuestos
+                    o por otro medio de pago aceptable para Starter, Usted se obliga a pagar todos los impuestos
                     aplicables. Si el pago no es recibido por nosotros de parte
                     del emisor de su tarjeta de crédito o débito o de sus
                     agentes, usted se obliga a pagar todas las cantidades
@@ -151,7 +148,7 @@ const Terminos = async () => {
                   </p>
 
                   <p>
-                    Mell Fashion Boutique se reserva el derecho a realizar
+                    Starter se reserva el derecho a realizar
                     cualquier ajuste y/o modificación en sus precios cuando se
                     presenten errores evidentes involuntarios, así como en
                     aquellas situaciones en las que no se cuente con stock y el
@@ -212,12 +209,12 @@ const Terminos = async () => {
 
                   <h3>INFORMACIÓN DE CONTACTO</h3>
                   <p>
-                    Mell Fashion Boutique no será responsable por cualquier
+                   Starter no será responsable por cualquier
                     incumplimiento de estos Términos y Condiciones, causado por
                     circunstancias fuera de su razonable control. Para Cualquier
                     duda o comentario, puede ponerse en contacto con nosotros a
                     nuestros números telefónicos +52 (55) 19914185, a través del
-                    correo electrónico contacto@mellfashionboutique.com
+                    correo electrónico contacto@starter.com.mx
                   </p>
                 </div>
               </div>

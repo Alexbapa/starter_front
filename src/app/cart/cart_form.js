@@ -12,6 +12,8 @@ import { toast } from 'sonner';
 
 import { useCartStore } from '../../store/cart';
 
+import { cotizarEnvio, generarGuia } from "../../services/enviatodoService";
+
 import { CardPayment } from '@mercadopago/sdk-react';
 
 import { initMercadoPago } from '@mercadopago/sdk-react'
