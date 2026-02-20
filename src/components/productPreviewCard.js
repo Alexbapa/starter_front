@@ -338,7 +338,7 @@ export const ProductPreviewCard = ({ item }) => {
             </Link>
           </h3>
           <div className="shop_price">
-            <span className="sale_price" style={{ color: "#fff" }}>$ {item.precio}</span>
+            <span className="sale_price" style={{ color: "#0033A0" }}>$ {item.precio}</span>
           </div>
         </div>
       </div>
