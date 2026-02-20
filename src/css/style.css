@@ -1870,6 +1870,12 @@ hr {
           animation: 0.3s ease-in-out 0s normal none 1 running fadeInUp;
 }
 
+.menu-logo-bottom {
+  margin-top: auto;   /* esto lo empuja hasta abajo */
+  padding: 40px 32px;
+  opacity: 0.5;
+}
+
 .megamenu {
   left: 0;
   right: 0;
@@ -4530,6 +4536,9 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+           background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .main_slider_1 .ms_nav_thumbnails {
   left: 0;
@@ -8453,7 +8462,7 @@ hr {
   margin-bottom: 5px;
 }
 .shop_layout_1 .shop_title > a {
-  color: #fff;
+  color: #0033A0;
   font-size: 20px;
   font-weight: 600;
   font-family: "Plantagenet";
@@ -17640,7 +17649,7 @@ hr {
 
   .filter_input_group {
     border:0;
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   .filter_input_group .items_col > li {
@@ -19101,52 +19110,84 @@ hr {
   font-size: 35px;
 }
 
-/* menu lateral*/
+/* ===== MENU LATERAL STARTER ===== */
+
 .sidenav {
-	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
-	position: fixed; /* Stay in place */
-	z-index: 99999999; /* Stay on top */
-	top: 0; /* Stay at the top */
+	position: fixed;
+	top: 0;
 	left: 0;
-	/*background-image: linear-gradient(115deg, rgba(194,88,133,1), rgba(255,211,211,1), rgba(246,153,126,1));*/
-  background-color: #f4f6f7;
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
-	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	height: 100vh;
+	width: 85vw;
+	background-color: #0e0e0e;
+	z-index: 99999999;
+	padding: 80px 30px 40px 30px;
+	overflow-y: auto;
+
+	/* 👇 Animación moderna */
+	transform: translateX(-100%);
+	transition: transform 0.35s ease-in-out;
 }
 
-/* The navigation menu links */
+.sidenav.open {
+	transform: translateX(0);
+}
+
+/* Links principales */
 .sidenav a {
-	padding: 8px 8px 8px 32px;
+	padding: 18px 0;
 	text-decoration: none;
-	font-size: 18px;
-	color: #844259;
-	display: block;
-	transition: 0.3s;
+	font-size: 20px;
+	font-weight: 600;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+	transition: 0.2s ease;
 }
 
-.sidenav .submenu {
-  margin-left: 10px;
-}  
-
-/* When you mouse over the navigation links, change their color */
+/* Hover moderno */
 .sidenav a:hover {
-	color: #0033A0;
+	color: #ffffff;
+	transform: translateX(6px);
 }
 
-/* Position and style the close button (top right corner) */
+/* Submenu (categorías con imagen) */
+.sidenav .submenu {
+	margin-left: 0;
+	gap: 12px;
+}
+
+/* Imagen de categoría */
+.sidenav .submenu img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+/* Botón cerrar */
 .sidenav .closebtn {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-	color:#844259;
+	font-size: 28px;
+	color: #ffffff;
+	transition: 0.2s ease;
 }
 
-.sidenav .closebtn:hover{
-  color:#0033A0;
+.sidenav .closebtn:hover {
+	transform: rotate(90deg);
+}
+
+/* Títulos de sección */
+.menu-section-title {
+	font-size: 11px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	opacity: 0.5;
+	margin-top: 40px;
+	margin-bottom: 10px;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -19159,8 +19200,15 @@ hr {
 @media screen and (max-height: 450px) {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
+
+
 }
 
+@media (max-width: 768px) {
+  .main_slider_1 .slider_item {
+    background-position: 40% center;
+  }
+}
 
 .fontPlantagenet {
   font-family: "Plantagenet";

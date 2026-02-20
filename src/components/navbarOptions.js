@@ -16,13 +16,15 @@ export const NavbarOptions = ({ categories }) => {
 
   const pathname = usePathname();
 
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "100vw";
-  }
+function openNav() {
+  document.getElementById("mySidenav").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
 
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }
+function closeNav() {
+  document.getElementById("mySidenav").classList.remove("open");
+  document.body.style.overflow = "auto";
+}
 
   return (
     <>
@@ -248,10 +250,6 @@ export const NavbarOptions = ({ categories }) => {
                   unoptimized={true}
                 />{" "}
                 {item.nombre}
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  style={{ position: "absolute", right: "25px" }}
-                />
               </Link>
             ))}
         </div>
@@ -273,6 +271,7 @@ export const NavbarOptions = ({ categories }) => {
           Contacto
         </Link>
       </div>
+      
     </>
   );
 };

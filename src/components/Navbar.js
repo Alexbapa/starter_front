@@ -49,7 +49,7 @@ export async function Navbar() {
             <ul className="header_icons_list ul_li">
               <li>
                 <ul className="social_primary ul_li">
-                  <li><a href="https://www.facebook.com/fashionistaa.boutique" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.facebook.com/StarterMex" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f"></i></a></li>
                 </ul>
               </li>
               <li>
