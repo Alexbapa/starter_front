@@ -17,7 +17,7 @@ import { cotizarEnvio, generarGuia } from "../../services/enviatodoService";
 import { CardPayment } from '@mercadopago/sdk-react';
 
 import { initMercadoPago } from '@mercadopago/sdk-react'
-initMercadoPago('APP_USR-84f2c42a-e204-46f0-8dda-57e08f7579a9', {locale: 'es-MX'}); //'YOUR_PUBLIC_KEY')
+initMercadoPago('TEST-be465b7a-f0a8-4dd6-a8c4-f5ce29602597', {locale: 'es-MX'}); //'YOUR_PUBLIC_KEY')
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

@@ -12,7 +12,7 @@ const tableCellStyle = {
   background: "#ffffff",
   borderTop: "1px solid #e2e2e2",
   borderBottom: "1px solid #e2e2e2",
-  padding: "0.3cm 0cm",
+  padding: "0.3cm .7cm",
   verticalAlign: "bottom"
 };
 
@@ -71,7 +71,7 @@ Para efectos de diferenciación, los términos que en lo sucesivo se
 definen, serán descritos con la primera letra en mayúscula y
 únicamente cuando se utilicen con dicho formato es cuando deberán
 de interpretarse como tales.</p>
-<table width="589" cellpadding="11" cellspacing="0">
+<table width="100%" cellpadding="11" cellspacing="0">
 	<col width="123"/>
 	<col width="422"/>
 	<tr valign="bottom">
