@@ -33,10 +33,11 @@ export const CartForm = () => {
   const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
   const clearCart = useCartStore((state) => state.clear_cart)
 
-  const [datos_entrega_nombre, setDatosEntregaNombre] = useState();
-  const [datos_entrega_direccion, setDatosEntregaDireccion] = useState();
-  const [datos_entrega_correo, setDatosEntregaCorreo] = useState();
-  const [datos_entrega_telefono, setDatosEntregaTelefono] = useState();
+  const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
+  const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
+  const [datos_entrega_codigo_postal, setDatosEntregaCodigoPostal] = useState('');
+  const [datos_entrega_correo, setDatosEntregaCorreo] = useState('');
+  const [datos_entrega_telefono, setDatosEntregaTelefono] = useState('');
   const [agree, setAgree] = useState(false);
 
   const [formaEntrega, setFormaEntrega] = useState('Envío a Domicilio');
@@ -59,15 +60,17 @@ export const CartForm = () => {
 
   const mostrarMPbutton = () => {
     //validamos campos
-    if(costo_envio === "" || costo_envio === undefined) {
+    if(costo_envio === "" || costo_envio === 0) {
       mostrarMensaje("Debes escribir el costo de envío");    
-    }else if(datos_entrega_nombre === "" || datos_entrega_nombre === undefined) {
+    }else if(datos_entrega_nombre === "") {
       mostrarMensaje("Debes escribir el nombre en datos de entrega");    
-    }else if(datos_entrega_direccion === "" || datos_entrega_direccion === undefined) {
+    }else if(datos_entrega_direccion === "") {
       mostrarMensaje("Debes escribir la direccion en datos de entrega");    
-    }else if(datos_entrega_correo === "" || datos_entrega_correo === undefined) {
+    }else if(datos_entrega_codigo_postal === "") {
+      mostrarMensaje("Debes escribir el código postal en datos de entrega");    
+    }else if(datos_entrega_correo === "") {
       mostrarMensaje("Debes escribir el correo en datos de entrega");    
-    }else if(datos_entrega_telefono === "" || datos_entrega_telefono === undefined) {
+    }else if(datos_entrega_telefono === "") {
       mostrarMensaje("Debes escribir el teléfono en datos de entrega");    
     }else if(agree === false) {
       mostrarMensaje("Debes aceptar los terminos y condiciones");    
@@ -83,6 +86,25 @@ export const CartForm = () => {
     setAgree(!agree);
     // Don't miss the exclamation mark
   }
+
+  const getMercadoPagoErrorMessage = (detail) => {
+    const errorMessages = {
+      'cc_rejected_bad_filled_security_code': 'Código de seguridad incorrecto. Verifica los datos de tu tarjeta.',
+      'cc_rejected_bad_filled_date': 'Fecha de vencimiento incorrecta. Verifica los datos de tu tarjeta.',
+      'cc_rejected_bad_filled_other': 'Revisa los datos de tu tarjeta. Algunos campos son incorrectos.',
+      'cc_rejected_bad_filled_card_number': 'Número de tarjeta inválido. Verifica los datos de tu tarjeta.',
+      'cc_rejected_call_for_authorize': 'La tarjeta requiere autorización. Contacta con tu banco.',
+      'cc_rejected_card_disabled': 'Tarjeta deshabilitada. Contacta con tu banco.',
+      'cc_rejected_duplicated_payment': 'Ya existe un pago realizado con esa tarjeta. Intenta con otra forma de pago.',
+      'cc_rejected_high_risk': 'Pago rechazado por seguridad. Intenta con otra forma de pago.',
+      'cc_rejected_insufficient_amount': 'Saldo insuficiente. Intenta con otra forma de pago.',
+      'cc_rejected_invalid_installments': 'Número de cuotas inválido. Intenta con otra opción.',
+      'cc_rejected_max_attempts': 'Superaste el número máximo de intentos. Intenta más tarde o con otra tarjeta.',
+      'cc_rejected_other_reason': 'Pago rechazado. Intenta con otra forma de pago.'
+    };
+    
+    return errorMessages[detail] || `Pago rechazado (${detail}). Intenta nuevamente o con otra forma de pago.`;
+  };
 
   const remove = (index) => {
     deleteCartItem(index)
@@ -136,6 +158,7 @@ export const CartForm = () => {
             
             setDatosEntregaNombre(null);
             setDatosEntregaDireccion(null);
+            setDatosEntregaCodigoPostal(null);
             setDatosEntregaCorreo(null);
             setDatosEntregaTelefono(null);
             setFormaEntrega("Envío a Domicilio");
@@ -161,6 +184,7 @@ export const CartForm = () => {
           entregar_a:datos_entrega_nombre,
           correo:datos_entrega_correo,
           direccion_entrega:datos_entrega_direccion,
+          codigo_postal:datos_entrega_codigo_postal,
           costo_envio:parseFloat(costo_envio),
           telefono:datos_entrega_telefono,
           estatus_pago:"Pagado",
@@ -241,19 +265,81 @@ export const CartForm = () => {
             sendData();
           }else{
             if(res.data.status === 'rejected'){
-              mostrarMensaje("Lo sentimos tu pago fué rechazado, inténtalo nuevamente");
+              const errorMessage = getMercadoPagoErrorMessage(res.data.detail);
+              mostrarMensaje(errorMessage);
+              // Restaurar botones y limpiar formulario para permitir reintento
+              setViewMPbutton(false);
+              setViewContinuebutton(true);
+              setAgree(false);
+              setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCodigoPostal('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }else if(res.data.status === 'pending'){
               mostrarMensaje("Lo sentimos, no se completó el proceso de pago todavía");
+              // Restaurar botones y limpiar formulario para permitir reintento
+              setViewMPbutton(false);
+              setViewContinuebutton(true);
+              setAgree(false);
+              setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCodigoPostal('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }else if(res.data.status === 'authorized'){
             mostrarMensaje("Lo sentimos, el pago fué autorizado pero no capturado todavía");
+            // Restaurar botones y limpiar formulario para permitir reintento
+            setViewMPbutton(false);
+            setViewContinuebutton(true);
+            setAgree(false);
+            setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }else if(res.data.status === 'in_process'){
             mostrarMensaje("Lo sentimos, el pago está en revisión");
+            // Restaurar botones y limpiar formulario para permitir reintento
+            setViewMPbutton(false);
+            setViewContinuebutton(true);
+            setAgree(false);
+            setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }else if(res.data.status === 'cancelled'){
               mostrarMensaje("Lo sentimos, el pago fué cancelado por una de las partes o el pago expiró");
+              // Restaurar botones y limpiar formulario para permitir reintento
+              setViewMPbutton(false);
+              setViewContinuebutton(true);
+              setAgree(false);
+              setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCodigoPostal('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }else if(res.data.status === 'refunded'){
               mostrarMensaje("Lo sentimos, el pago fué devuelto al usuario");
+              // Restaurar botones y limpiar formulario para permitir reintento
+              setViewMPbutton(false);
+              setViewContinuebutton(true);
+              setAgree(false);
+              setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCodigoPostal('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }else{
               mostrarMensaje(res.data.status);
+              // Restaurar botones y limpiar formulario para permitir reintento
+              setViewMPbutton(false);
+              setViewContinuebutton(true);
+              setAgree(false);
+              setDatosEntregaNombre('');
+              setDatosEntregaDireccion('');
+              setDatosEntregaCodigoPostal('');
+              setDatosEntregaCorreo('');
+              setDatosEntregaTelefono('');
             }
           }  
       
@@ -261,6 +347,15 @@ export const CartForm = () => {
         } catch (error) {
           console.log(error);
           mostrarMensaje(error);
+          // Restaurar botones y limpiar formulario para permitir reintento en caso de error
+          setViewMPbutton(false);
+          setViewContinuebutton(true);
+          setAgree(false);
+          setDatosEntregaNombre('');
+          setDatosEntregaDireccion('');
+          setDatosEntregaCodigoPostal('');
+          setDatosEntregaCorreo('');
+          setDatosEntregaTelefono('');
         }
     
       } else {
@@ -345,7 +440,6 @@ export const CartForm = () => {
                           src={item.foto_principal}
                           className="img-fluid"
                           alt={item.foto_principal}
-                          unoptimized={true}
                         />
                       </div>
                       <div className="item_content">
@@ -450,6 +544,14 @@ export const CartForm = () => {
                       id="datos_entrega_direccion"
                       type="text"
                       style={{width:"100%"}}
+                      />
+
+                      <input
+                      onChange={(e) => setDatosEntregaCodigoPostal(e.target.value)}
+                      placeholder="Código Postal"
+                      id="datos_entrega_codigo_postal"
+                      type="text"
+                      style={{width:"100%",marginBottom:"8px",marginTop:"8px"}}
                       />
 
                       <input
