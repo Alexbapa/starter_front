@@ -79,7 +79,7 @@ const AllCategories = async ({ params }) => {
 
         <section className="product_section sec_space_small">
           <div className="container width_desktop">
-            <div className="filter_input_group">
+            <div className="filter_input_group" style={{ position: 'relative', zIndex: 3 }}>
               <form action="#">
                 <ul className="items_col ul_li">
                   <li>

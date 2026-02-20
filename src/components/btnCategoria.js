@@ -49,7 +49,7 @@ export const BtnCategoria = ({categories}) => {
       style={{ fontSize: "1.2rem", marginTop: "25px", minWidth:"20vw" }}
     >
       <span className="fadeInUp">{activeCategory}
-        <i className="fas fa-angle-right" style={{ marginLeft: "20px" }}></i>
+       
       </span>  
     </Link>
   );

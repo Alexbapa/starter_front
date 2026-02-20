@@ -74,11 +74,11 @@ const Page = async () => {
                   */}
                       <h1
                         className="big_title text-pink fadeInCustom"
-                        style={{lineHeight:".75"}}
+                        style={{lineHeight:".90"}}
                       >
-                        <span style={{ paddingBottom: "15px", display: "inline-block" }}>DOMINA</span>
+                        <span style={{ paddingBottom: "12px", display: "inline-block" }}>DOMINA</span>
                         <br></br>
-                        <span className="text-brown">las calles</span>
+                        <span className="text-brown" style={{ fontSize: "0.8em", display: "block" }}>las calles con tu outfit</span>
                       </h1>
                       {/*
                   <p className="text-brown" data-animation="fadeInUp2" data-delay=".6s">
@@ -124,7 +124,7 @@ const Page = async () => {
           </div>
         </div>
 
-        <section className="fullwidth_deals_1" style={{backgroundAttachment:"fixed", backgroundPositionX:"30%"}}>
+        <section className="fullwidth_deals_1" style={{backgroundAttachment:"fixed", backgroundPositionX:"30%", }}>
           <div className="container width_desktop main_slider_1">
             <div className="row justify-content-end">
               <div className="col col-md-6 col-sm-8">

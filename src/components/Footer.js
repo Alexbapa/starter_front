@@ -116,7 +116,6 @@ export async function Footer() {
                     <ul className="footer_contact_info ul_li_block">
                       <li>
                         <p>
-                          Email:{" "}
                           <a href="mailto:ecommerce@starter.com.mx">
                             ecommerce@starter.com.mx
                           </a>
