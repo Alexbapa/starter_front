@@ -5498,17 +5498,26 @@ hr {
 ================================================== */
 /* fullwidth deals 1 (Home 1) - start */
 .fullwidth_deals_1 {
-display: flex;
+  position: relative;
+  display: flex;
   min-height: 850px;
   align-items: center;
+  overflow: hidden; /* importante para pseudo-elemento si lo usas */
+
   background-image: url("../images/banner/banner-3.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 30% center; /* mueve un poco a la izquierda */
+  background-attachment: scroll; /* default seguro para iOS */
 
-  /* FIX ESPECÍFICO PARA IOS */
-  background-attachment: scroll; /* Evita el 'fixed' que iOS rompe */
-  -webkit-background-size: cover;
+  -webkit-background-size: cover; /* iOS */
+}
+
+/* Solo desktop: parallax */
+@media (min-width: 768px) {
+  .fullwidth_deals_1 {
+    background-attachment: fixed;
+  }
 }
 .fullwidth_deals_1 h2 {
   line-height: 1;

@@ -124,7 +124,7 @@ const Page = async () => {
           </div>
         </div>
 
-        <section className="fullwidth_deals_1" style={{backgroundAttachment:"fixed", backgroundPositionX:"30%", }}>
+        <section className="fullwidth_deals_1" style={{backgroundPositionX:"30%", }}>
           <div className="container width_desktop main_slider_1">
             <div className="row justify-content-end">
               <div className="col col-md-6 col-sm-8">
