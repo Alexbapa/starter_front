@@ -326,8 +326,8 @@ export const ProductPreviewCard = ({ item }) => {
 
         {/*info producto*/}
         <div className="shop_content">
-          <h3 className="shop_title" style={{ color: "#fff" }}>
-            <Link style={{ color: "#fff" }}
+          <h3 className="shop_title" style={{ color: "#0033A0" }}>
+            <Link style={{ color: "#0033A0" }}
               href={`/shop_details/${item.categoria
                 .trim()
                 .replace(/\s/g, "-")}/${item.nombre
