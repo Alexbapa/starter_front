@@ -443,9 +443,9 @@ actualización:</b> 17 de febrero de 2026.</p>
               <div className="col-lg-8">
                 <div style={{ padding: "30px 0px" }}>
 
-        <div
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-    />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: htmlContent }}
+                  />
 
 
                 </div>
