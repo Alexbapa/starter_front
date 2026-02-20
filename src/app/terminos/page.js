@@ -75,29 +75,29 @@ de interpretarse como tales.</p>
 	<col width="123"/>
 	<col width="422"/>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>Términos y Condiciones ”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			Son los presentes Términos y Condiciones, junto con el Aviso de
 			Privacidad, los cuales se entienden como el acuerdo total entre
 			“HOCKEY EXPORTPRINT” y el cliente o usuario.</p>
 		</td>
 	</tr>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>Aviso de privacidad”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			Es el aviso de privacidad respecto de la recolección y uso de
 			datos personales que son recabados por “HOCKEY EXPORTPRINT”.</p>
 		</td>
 	</tr>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>HOCKEY EXPORTPRINT”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“HOCKEY EXPORTPRINT”, S.A. DE C.V., así como cualquier otra
 			empresa filial y/o subsidiaria, controladora, titular de la
 			plataforma, así como terceros que ofrezcan servicios a través o
@@ -105,29 +105,29 @@ de interpretarse como tales.</p>
 		</td>
 	</tr>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>Plataforma”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			Es el dominio&nbsp;<font color="#467886"><u><a href="http://www.starter-mx.com/">www.starter-mx.com</a></u></font>
 			o cualquier otro subdominio, dominio vinculado, o re-direccionado
 			a la misma, que permita el acceso a la plataforma.</p>
 		</td>
 	</tr>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>Servicios”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			Significa la comercialización de Productos ofrecidos por “HOCKEY
 			EXPORTPRINT”</p>
 		</td>
 	</tr>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>Terceros”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			Cualquier tercero que tenga una relación comercial directa o
 			indirectamente con “HOCKEY EXPORTPRINT”, tales como
 			patrocinadores, anunciantes, prestadores de servicios, socios
@@ -135,10 +135,10 @@ de interpretarse como tales.</p>
 		</td>
 	</tr>
 	<tr valign="bottom">
-		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="123" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			“<b>Cliente o Usuario”</b></p>
 		</td>
-		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0cm"><p align="justify">
+		<td width="422" bgcolor="#ffffff" style="background: #ffffff; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; border-left: none; border-right: none; padding: 0.3cm 0.7cm;vertical-align: middle"><p align="justify">
 			Aquella persona moral o física (mayor de edad, que cuenta con
 			capacidad de goce y ejercicio plena y suficiente) que utiliza la
 			plataforma y los servicios que en la misma se ofrecen. En caso de
