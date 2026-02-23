@@ -1,5 +1,5 @@
 
-import { CartForm } from "./cart_form";
+import { CartForm } from ".././cart_form";
 
 const Cart = async () => {
 

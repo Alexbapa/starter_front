@@ -1,14 +1,11 @@
-import clienteAxios from "../config/axios";
+import clienteAxios from "../../../config/axios";
 
-import Link from 'next/link'
+import Link from 'next/link'; 
 
-import {BtnCategoria} from "../components/btnCategoria"
-
-import {ProductPreviewCard} from "../components/productPreviewCard"
-
-import {CategoryItemMain} from "../components/CategoryItemMain"
-
-import {CategoryItemSmall} from "../components/CategoryItemSmall"
+import {BtnCategoria} from "../../../components/btnCategoria";
+import {ProductPreviewCard} from "../../../components/productPreviewCard";
+import {CategoryItemMain} from "../../../components/CategoryItemMain";
+import {CategoryItemSmall} from "../../../components/CategoryItemSmall";
 
 const getCategories = async () => {
   try {
@@ -76,9 +73,9 @@ const Page = async () => {
                         className="big_title text-pink fadeInCustom"
                         style={{lineHeight:".90"}}
                       >
-                        <span style={{ paddingBottom: "12px", display: "inline-block" }}>Comming</span>
+                        <span style={{ paddingBottom: "12px", display: "inline-block" }}>DOMINA</span>
                         <br></br>
-                        <span className="text-brown" style={{ fontSize: "0.8em", display: "block" }}>soon</span>
+                        <span className="text-brown" style={{ fontSize: "0.8em", display: "block" }}>las calles con tu outfit</span>
                       </h1>
                       {/*
                   <p className="text-brown" data-animation="fadeInUp2" data-delay=".6s">

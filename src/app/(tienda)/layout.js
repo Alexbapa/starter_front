@@ -1,22 +1,22 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import ImportJSFiles from "./importJsFiles";
+import ImportJSFiles from "../importJsFiles"; // Solo sube 1 nivel a app/
 
-import "../css/animate.css";
-import "../css/fontawesome.css";
-import "../css/jquery-ui.css";
-import "../css/magnific-popup.css";
-import "../css/nice-select.css";
-import "../css/style.css";
-import "../css/image-gallery.css";
+import "../../css/animate.css"; // Sube 2 niveles a src/css/
+import "../../css/fontawesome.css";
+import "../../css/jquery-ui.css";
+import "../../css/magnific-popup.css";
+import "../../css/nice-select.css";
+import "../../css/style.css";
+import "../../css/image-gallery.css";
 
-import clienteAxios from "../config/axios";
+import clienteAxios from "../../config/axios"; // Sube 2 niveles a src/config/
 
 import { Toaster, toast } from 'sonner';
 
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
-import { BackToTopButton } from "../components/BackToTopButton";
+import { Navbar } from "../../components/Navbar"; // Sube 2 niveles a src/components/
+import { Footer } from "../../components/Footer";
+import { BackToTopButton } from "../../components/BackToTopButton";
 
 const getSeo = async () => {
   try {
@@ -52,10 +52,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-       
+        <ImportJSFiles />
+        <BackToTopButton />
+        <Navbar/>
         <Toaster richColors position="top-right"/>
         {children}
-       
+        <Footer /> 
       </body>
     </html>
   );
