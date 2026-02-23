@@ -44,28 +44,29 @@ import { BackToTopButton } from "../components/BackToTopButton";
 
 const getSeo = async () => {
   try {
-    const res = await clienteAxios.get(`/seo/single/658db30b8b40c216d72c8278`);
-    //console.log(res.data.single)
-    
-    /*
-    setTitle(res.data.single.title);
-    setWords(res.data.single.words);
-    setDescription(res.data.single.description);
-    */
+    const res = await clienteAxios.get(
+      `/seo/single/658db30b8b40c216d72c8278`
+    );
+
     return res.data.single;
-    
   } catch (error) {
-    console.log(error);
+    console.log("SEO fallback activado:", error.message);
+
+    return {
+      title: "Starter Streetwear",
+      description: "Streetwear Collection Drop 01",
+      words: "streetwear, fashion, drop, starter",
+    };
   }
 };
 
 const seoData = await getSeo();
 
 export const metadata = {
-  title: seoData.title,
-  description: seoData.description,
-  keywords: seoData.words,
-  author: "Goma Lab", 
+  title: seoData?.title || "Starter Streetwear",
+  description: seoData?.description || "Streetwear Collection Drop 01",
+  keywords: seoData?.words || "streetwear, fashion, drop",
+  author: "Goma Lab",
   alternates: {
     canonical: "https://www.starter.com.mx",
   },

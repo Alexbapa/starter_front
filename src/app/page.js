@@ -88,12 +88,13 @@ export default function ComingSoon() {
         >
          <motion.div
   style={{
-    width: 230,
-    height: 230,
-    borderRadius: "50%",
+     width: "clamp(140px, 40vw, 230px)",
+  height: "clamp(140px, 40vw, 230px)",
+  borderRadius: "50%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",        
   }}
   animate={{
     boxShadow: [
@@ -242,6 +243,8 @@ const styles = {
     gap: "2rem",
     color: "#fff",
     padding: "0 1.5rem",
+    width: "100%",
+maxWidth: "1200px",
   },
   logoContainer: {},
   subtitle: {
@@ -254,39 +257,43 @@ const styles = {
     backgroundColor: "#ffffff",
     opacity: 0.3,
   },
-  timerContainer: {
-    display: "flex",
-    gap: "1.5rem",
-    marginTop: "1rem",
-    padding: "1.5rem 2rem",
-    backdropFilter: "blur(10px)",
-    background: "rgba(255,255,255,0.05)",
-    borderRadius: "16px",
-    border: "1px solid rgba(255,255,255,0.1)",
-  },
-  timeBlock: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    minWidth: "70px",
-  },
-  timeNumber: {
-    fontSize: "clamp(2.5rem, 6vw, 4rem)",
-    fontWeight: "800",
-    lineHeight: 1,
-    textShadow: "0 0 20px rgba(255,255,255,0.15)",
-  },
+ timerContainer: {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "clamp(0.5rem, 3vw, 1.5rem)",
+  marginTop: "1rem",
+  padding: "clamp(1rem, 4vw, 1.5rem)",
+  backdropFilter: "blur(10px)",
+  background: "rgba(255,255,255,0.05)",
+  borderRadius: "16px",
+  border: "1px solid rgba(255,255,255,0.1)",
+  flexWrap: "nowrap",
+  maxWidth: "95vw",
+},
+ timeBlock: {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  minWidth: "clamp(55px, 16vw, 80px)",
+},
+ timeNumber: {
+  fontSize: "clamp(2rem, 8vw, 4rem)",
+  fontWeight: "800",
+  lineHeight: 1,
+  textShadow: "0 0 20px rgba(255,255,255,0.15)",
+},
   timeLabel: {
     fontSize: "0.7rem",
     letterSpacing: "2px",
     color: "#aaa",
     marginTop: "0.5rem",
   },
-  colon: {
-    fontSize: "3rem",
-    fontWeight: "800",
-    opacity: 0.6,
-  },
+ colon: {
+  fontSize: "clamp(1.8rem, 7vw, 3rem)",
+  fontWeight: "800",
+  opacity: 0.5,
+},
   footerText: {
     fontSize: "0.8rem",
     letterSpacing: "3px",
