@@ -135,7 +135,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    fontFamily: 'var(--font-din), sans-serif',
     overflow: 'hidden',
   },
   bgImageContainer: {

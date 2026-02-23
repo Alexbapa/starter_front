@@ -22,7 +22,7 @@
 @font-face {
   font-weight: 400;
   font-style: normal;
-  font-family: "Aligatai";
+ font-family: var(--font-din), sans-serif !important;
   src: local("Aligatai"), url("../fonts/Aligatai.woff") format("woff");
 }
 @font-face {
@@ -49,7 +49,6 @@ body {
   line-height: 1.65;
   font-style: normal;
   color: #3d3d3d;
-  font-family: "Monserrat", sans-serif;
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -117,17 +116,14 @@ a {
   text-decoration: none;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-   font-family: "Anton", sans-serif !important;
 }
 
 .item_title{
-  font-family: "Anton", sans-serif !important;
   text-transform: uppercase;
 }
 a:active, a:focus, a:hover, a:visited {
   outline: 0;
   text-decoration: none;
-   font-family: "Anton", sans-serif !important;
 }
 
 button {
@@ -146,12 +142,9 @@ button:focus {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #252525;
-  font-family: "Anton", sans-serif !important;
 }
 
-span{
-   font-family: "Anton", sans-serif !important;
-}
+
 
 hr {
   opacity: 0.2;
@@ -167,6 +160,23 @@ hr {
 .decoration_wrap .decoration_image {
   z-index: -1;
   position: absolute;
+}
+
+/* Aplicamos DIN-Medium por defecto a todos los textos de lectura */
+body, p, span, a, li, button, input {
+  font-family: var(--font-din), sans-serif !important;
+}
+
+/* Aplicamos DIN-Black a todos los títulos pesados */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-din), sans-serif !important;
+  text-transform: uppercase; /* Sello característico de la marca */
+}
+
+/* Clases utilitarias por si necesitas forzar la itálica en un banner */
+.font-starter-italic {
+  font-family: var(--font-din), sans-serif !important;
+  font-style: italic;
 }
 
 /* global reset - end
@@ -751,7 +761,7 @@ hr {
 .section_title p {
   color: #c1c1c1;
   font-size: 17px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* section title - end */
@@ -781,7 +791,7 @@ hr {
   text-transform: uppercase;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 
 /* section title 4 - end */
@@ -964,7 +974,7 @@ hr {
   position: static;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .select_option .nice-select .list {
   width: 100%;
@@ -1049,7 +1059,7 @@ hr {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .checkbox_item input:checked:before {
   opacity: 1;
@@ -1572,7 +1582,7 @@ hr {
 }
 
 .comment_item {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .comment_item:not(:last-child) {
   margin-bottom: 40px;
@@ -1618,7 +1628,7 @@ hr {
   font-weight: 500;
   margin-bottom: 0;
   margin-right: 30px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .comment_item .comment_date {
   color: #a8aaab;
@@ -1857,7 +1867,7 @@ hr {
   content: "";
   font-weight: 400;
   display: inline-block;
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .main_menu_list .submenu .submenu {
   top: 0px;
@@ -2331,7 +2341,7 @@ hr {
   content: "";
   font-weight: 400;
   display: inline-block;
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .offcanvas_menu .dropdown-menu {
   width: 100%;
@@ -2948,38 +2958,38 @@ hr {
   color: #6b6b6b;
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_1 .form_item input {
   height: 66px;
   border: none;
   border-radius: 0;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_1 .form_item input:-moz-placeholder {
   color: #6b6b6b;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_1 .form_item input::-moz-placeholder {
   color: #6b6b6b;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_1 .form_item input:-ms-input-placeholder {
   color: #6b6b6b;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_1 .form_item input::-webkit-input-placeholder {
   color: #6b6b6b;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* fooetr newsletter 1 - end */
@@ -3060,28 +3070,28 @@ hr {
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_3 .form_item input::-moz-placeholder {
   color: #bfbfbf;
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_3 .form_item input:-ms-input-placeholder {
   color: #bfbfbf;
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_3 .form_item input::-webkit-input-placeholder {
   color: #bfbfbf;
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fooetr_newsletter_3 .form_item .btn {
   top: 50%;
@@ -3266,7 +3276,7 @@ hr {
   font-size: 16px;
   margin-bottom: 0;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
+ font-family: var(--font-din), sans-serif;
 }
 .footer_instagram2 .title_text i {
   margin-right: 5px;
@@ -3277,7 +3287,7 @@ hr {
   margin-bottom: 0;
   font-weight: 500;
   color: #252525;
-  font-family: "Poppins", sans-serif;
+ font-family: var(--font-din), sans-serif;
 }
 .footer_instagram2 .viewall_btn:hover {
   color: #0033A0;
@@ -3330,7 +3340,7 @@ hr {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 5px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .footer_twitter .twitter_user_name {
   color: #7c7c7c;
@@ -3380,13 +3390,13 @@ hr {
 /* footer style 2 - start */
 .footer_style_2 {
   background-color: #1c1f23;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .footer_style_2 .footer_widget_title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 15px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .footer_style_2 .fooetr_widget_area {
   padding: 100px 0 80px;
@@ -3461,7 +3471,7 @@ hr {
   padding: 60px 0 80px;
 }
 .footer_style_3 .footer_about p {
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .footer_style_3 .social_primary a {
   color: #888888;
@@ -3594,7 +3604,7 @@ hr {
 .footer_style_5 .footer_about p {
   font-size: 16px;
   margin-bottom: 40px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .footer_style_5 .footer_contact_info {
   margin-bottom: 45px;
@@ -3668,7 +3678,7 @@ hr {
 /* footer style 6 - start */
 .footer_style_6 {
   color: #bbb8b8;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .footer_style_6 .footer_widget_area {
   padding: 90px 0 70px;
@@ -3864,7 +3874,7 @@ hr {
 .footer_style_8 .footer_bottom .copyright_text {
   color: #888889;
   font-size: 16px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .footer_style_8 .footer_bottom .copyright_text a {
   color: #888889;
@@ -4005,25 +4015,25 @@ hr {
   color: #666666;
   font-size: 13px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .sb_search .form_item input::-moz-placeholder {
   color: #666666;
   font-size: 13px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .sb_search .form_item input:-ms-input-placeholder {
   color: #666666;
   font-size: 13px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .sb_search .form_item input::-webkit-input-placeholder {
   color: #666666;
   font-size: 13px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .sb_search .form_item button {
   top: 50%;
@@ -4314,7 +4324,7 @@ hr {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Font Awesome 5 Pro";
+  font-family: var(--font-din), sans-serif;
 }
 .fs_color_list input:checked:before {
   opacity: 1;
@@ -4392,7 +4402,7 @@ hr {
   color: #949494;
   font-size: 21px;
   margin-bottom: 40px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .newsletter_form_1 p small {
   font-size: 18px;
@@ -4620,7 +4630,7 @@ hr {
 }
 .main_slider_1 p {
   margin-bottom: 40px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* main slider 1 - end */
@@ -4675,7 +4685,7 @@ hr {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 35px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .main_slider_4 .item_type {
   right: 66px;
@@ -4765,7 +4775,7 @@ hr {
 .main_slider_5 p {
   font-size: 20px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .main_slider_5 .slider_nav {
   left: 0;
@@ -4825,7 +4835,7 @@ hr {
 .main_slider_6 p {
   font-size: 20px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .main_slider_6 .model_image1 {
   left: 0;
@@ -4949,7 +4959,7 @@ hr {
   font-weight: 900;
   position: absolute;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .main_slider_8 .slider_content {
   margin-top: -230px;
@@ -5042,7 +5052,7 @@ hr {
   font-size: 52px;
   margin-bottom: 0;
   font-weight: 400;
-  font-family: "Aligatai";
+ font-family: var(--font-din), sans-serif;
 }
 .main_slider_10 .big_title {
   font-size: 86px;
@@ -5484,7 +5494,7 @@ hr {
   font-weight: 400;
   margin-bottom: 10px;
   text-transform: uppercase;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif;
 }
 .creative_category_section p {
   font-size: 23px;
@@ -5544,7 +5554,7 @@ hr {
 .fullwidth_deals_1 p {
   font-size: 17px;
   margin-bottom: 40px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* fullwidth deals 1 (Home 1) - end */
@@ -5674,7 +5684,7 @@ hr {
   color: #1e1e1e;
   font-size: 19px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_deals_2 .slick-dots {
   bottom: 40px;
@@ -5708,7 +5718,7 @@ hr {
   font-size: 140px;
   font-weight: 400;
   margin-bottom: 45px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_deals_3 .countdown_timer {
   margin-bottom: 70px;
@@ -5725,7 +5735,7 @@ hr {
   font-size: 44px;
   font-weight: 400;
   margin-bottom: 5px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_deals_3 .countdown_timer span {
   font-size: 17px;
@@ -5775,7 +5785,7 @@ hr {
   text-transform: uppercase;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
   background-color: rgba(255, 255, 255, 0.8);
 }
 .instagram_title_2 i {
@@ -6107,7 +6117,7 @@ hr {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #928656;
 }
@@ -6325,7 +6335,7 @@ hr {
   font-weight: 500;
   margin-bottom: 5px;
   display: inline-block;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .feature_item_1 .item_category:hover {
   color: #0033A0;
@@ -6452,7 +6462,7 @@ hr {
   color: #686868;
   font-size: 20px;
   margin-bottom: 40px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .feature_item_3:hover .item_image img {
   -webkit-transform: scale(1.08);
@@ -6504,7 +6514,7 @@ hr {
   color: #777777;
   font-size: 19px;
   margin-bottom: 35px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* feature item 4 (home 3) - end */
@@ -6524,7 +6534,7 @@ hr {
   color: #231f1f;
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_feature_1 .info_list {
   margin-bottom: 65px;
@@ -6573,7 +6583,7 @@ hr {
   color: #898989;
   display: block;
   font-size: 17px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* full width feature 1 (home 4) - end */
@@ -6594,7 +6604,7 @@ hr {
 .fullwidth_feature_2 p {
   font-size: 18px;
   margin-bottom: 35px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_feature_2 .nav {
   max-width: 144px;
@@ -6678,7 +6688,7 @@ hr {
   color: #231f1f;
   font-size: 20px;
   margin-bottom: 35px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* full width feature 3 (home 6) - end */
@@ -7035,7 +7045,7 @@ hr {
   font-size: 52px;
   font-weight: 400;
   margin-bottom: 15px;
-  font-family: "Aligatai";
+ font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_feature_6 h4 {
   line-height: 1;
@@ -7097,7 +7107,7 @@ hr {
   font-size: 53px;
   font-weight: 400;
   margin-bottom: 10px;
-  font-family: "Aligatai";
+ font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_feature_7 .item_title {
   font-size: 70px;
@@ -7107,7 +7117,7 @@ hr {
   color: #494949;
   font-size: 18px;
   margin-bottom: 45px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .fullwidth_feature_7 .image_group {
   margin: -5px;
@@ -7278,14 +7288,14 @@ hr {
   font-weight: 700;
   margin-bottom: 6px;
   color: #0033A0;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .featured_collection .title_wrap .big_title {
   line-height: 1;
   font-size: 100px;
   font-weight: 400;
   margin-bottom: 50px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 
 .featured_collection_carousel .carousel_nav {
@@ -7362,7 +7372,7 @@ hr {
   font-weight: 400;
   font-size: 110px;
   margin-bottom: 10px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection1 .image_group {
   margin: 0 -10px 10px;
@@ -7381,7 +7391,7 @@ hr {
   font-weight: 400;
   font-size: 140px;
   margin-bottom: 10px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection2 p {
   font-size: 22px;
@@ -7396,7 +7406,7 @@ hr {
   font-weight: 400;
   font-size: 235px;
   margin-bottom: 0;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection3 p {
   font-size: 23px;
@@ -7426,7 +7436,7 @@ hr {
 .our_collection3 .product_item h3 a {
   color: #ffffff;
   font-size: 40px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection3 .product_item h3 a:hover {
   color: #0033A0;
@@ -7446,7 +7456,7 @@ hr {
   font-weight: 400;
   font-size: 140px;
   margin-bottom: 30px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection4 .image_wrap {
   position: relative;
@@ -7478,7 +7488,7 @@ hr {
   font-weight: 400;
   font-size: 168px;
   margin-bottom: 10px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection5 p {
   font-size: 22px;
@@ -7512,7 +7522,7 @@ hr {
   font-size: 80px;
   font-weight: 400;
   margin-bottom: 15px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .our_collection6 .product_tabnav_4 {
   margin-bottom: 30px;
@@ -7588,7 +7598,7 @@ hr {
   color: #1f1e1e;
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .about_section1 ul {
   margin-bottom: 45px;
@@ -7596,7 +7606,7 @@ hr {
 .about_section1 ul > li {
   color: #1f1e1e;
   font-size: 15px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .about_section1 ul > li:not(:last-child) {
   margin-bottom: 20px;
@@ -7619,7 +7629,7 @@ hr {
   font-weight: 400;
   margin-bottom: 0;
   color: #0033A0;
-  font-family: "Aligatai";
+ font-family: var(--font-din), sans-serif !important;
 }
 .about_section2 .title_text {
   line-height: 1;
@@ -7663,7 +7673,7 @@ hr {
   font-size: 19px;
   margin-bottom: 0;
   line-height: 1.3;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* about section 2 - end */
@@ -7707,7 +7717,7 @@ hr {
   color: #1f1e1e;
   font-size: 20px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* testimonial layout 1 (home 5) - end */
@@ -7718,7 +7728,7 @@ hr {
 .testimonial_item_simple p {
   font-style: italic;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .testimonial_item_simple .thumbnail_wrap {
   width: 100px;
@@ -7770,7 +7780,7 @@ hr {
   font-size: 14px;
   padding-top: 5px;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .testimonial_layout_2 p {
   color: #1c1f23;
@@ -7783,7 +7793,7 @@ hr {
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 0;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .testimonial_layout_2 .name_text span {
   color: #a8aaab;
@@ -7848,7 +7858,7 @@ hr {
   margin-bottom: 0;
   margin-right: 15px;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .product_filter_bar .sorting_from .select_option {
   min-width: 140px;
@@ -8048,13 +8058,13 @@ hr {
   font-size: 12px;
   font-weight: 300;
   margin-bottom: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .filter_input_group .reser_btn {
   color: #1c1f23;
   font-size: 12px;
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .filter_input_group .reser_btn:hover {
   color: #0033A0;
@@ -8203,7 +8213,7 @@ hr {
   font-weight: 500;
   margin-bottom: 35px;
   color: #252525;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .shop_offer_carousel .btns_group {
   margin: -5px;
@@ -8341,7 +8351,7 @@ hr {
   font-size: 18px;
   font-weight: 700;
   margin-right: 7px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .small_product_layout .item_price del {
   color: #a7a7a7;
@@ -8395,7 +8405,7 @@ hr {
   font-size: 13px;
   font-weight: 500;
   padding: 4px 9px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .shop_layout_1 .action_btns_group {
   top: 0;
@@ -8475,7 +8485,7 @@ hr {
   color: #0033A0;
   font-size: 20px;
   font-weight: 600;
-  font-family: "Plantagenet";
+  font-family: var(--font-din), sans-serif;
 }
 .shop_layout_1 .shop_price {
   display: -webkit-box;
@@ -9472,7 +9482,7 @@ hr {
   font-weight: 700;
   border-radius: 3px;
   padding: 10px 10px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .shop_layout_9 .badge_sale {
   background-color: #f2b800;
@@ -9483,7 +9493,7 @@ hr {
 .shop_layout_9 .item_title {
   font-weight: 400;
   margin-bottom: 10px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .shop_layout_9 .item_title a {
   font-size: 20px;
@@ -9957,7 +9967,7 @@ hr {
   color: #7b7d7f;
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .blog_standard:hover .blog_image_wrap img {
   -webkit-transform: scale(1.08);
@@ -10143,7 +10153,7 @@ hr {
   color: #686868;
   font-size: 20px;
   margin-bottom: 40px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .blog_item_split:hover .item_image img {
   -webkit-transform: scale(1.08);
@@ -10286,7 +10296,7 @@ hr {
 .blog_details_content p {
   color: #8d8e90;
   margin-bottom: 35px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .blog_details_content .post_meta {
   margin-bottom: 15px;
@@ -10385,7 +10395,7 @@ hr {
   padding: 6px 10px;
   border-radius: 2px;
   background-color: #0033A0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .post_tags_links a:hover {
   background-color: #252525;
@@ -10418,7 +10428,7 @@ hr {
   padding: 5px 11px 4px;
   background-color: #1c1f23;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .shop_details .item_subtitle {
   line-height: 1;
@@ -10567,7 +10577,7 @@ hr {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .sd_image_carousel .slick-prev:hover,
 .sd_image_carousel .slick-next:hover {
@@ -10651,7 +10661,7 @@ hr {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .sd_color_list input:checked:after {
   opacity: 1;
@@ -10720,7 +10730,7 @@ hr {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .sd_color_list2 input:checked:after {
   opacity: 1;
@@ -10967,7 +10977,7 @@ hr {
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .star_group input:hover:before, .star_group input:checked:before {
   color: #f3b833;
@@ -11165,7 +11175,7 @@ hr {
 }
 .shop_details2 p {
   margin-top: 15px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .shop_details2 .title_text {
   line-height: 1;
@@ -11368,7 +11378,7 @@ hr {
 .shop_details_description p {
   color: #7b7d7f;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .shop_details_description .info_list {
   display: -webkit-box;
@@ -11538,7 +11548,7 @@ hr {
   font-size: 84px;
   margin-bottom: 0;
   font-weight: 400;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 
 .fashion_video_item {
@@ -12237,7 +12247,7 @@ hr {
   display: inline-block;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .accordion_primary button[aria-expanded=true]:before {
   content: "";
@@ -12251,7 +12261,7 @@ hr {
   color: #686c6e;
   font-size: 16px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* accordion primary - end */
@@ -12278,7 +12288,7 @@ hr {
   display: inline-block;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .accordion_boxed button[aria-expanded=true] {
   color: #252525;
@@ -12302,7 +12312,7 @@ hr {
   color: #686c6e;
   font-size: 16px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* accordion boxed - end */
@@ -12328,7 +12338,7 @@ hr {
   display: inline-block;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .accordion_boxed2 button[aria-expanded=true] {
   border-color: #ffffff;
@@ -12355,7 +12365,7 @@ hr {
   color: #686c6e;
   font-size: 16px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* accordion boxed 2 - end */
@@ -12381,7 +12391,7 @@ hr {
   display: inline-block;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  font-family: "Font Awesome 5 Pro";
+ font-family: var(--font-din), sans-serif !important;
 }
 .accordion_border button[aria-expanded=true] {
   color: #ffffff;
@@ -12402,7 +12412,7 @@ hr {
   color: #686c6e;
   font-size: 16px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* accordion border - end */
@@ -12431,7 +12441,7 @@ hr {
   font-weight: 500;
   line-height: 1.4;
   margin-bottom: 55px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 .diract_contact_info li {
@@ -12725,7 +12735,7 @@ hr {
   font-weight: 700;
   font-size: 280px;
   margin-bottom: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .error_section_3 h2 span {
   font-weight: 400;
@@ -12816,7 +12826,7 @@ hr {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
 }
 .dashboard_nav span {
   height: 24px;
@@ -12845,7 +12855,7 @@ hr {
 .vendor_section p {
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 .vendor_image {
@@ -12977,7 +12987,7 @@ hr {
   border-radius: 4px;
   margin-bottom: -19px;
   background-color: #f3f3f3;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 
 /* selling form wrap - end */
@@ -13449,7 +13459,7 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .dashboard_admin_wrap .item_image {
   width: 200px;
@@ -13467,7 +13477,7 @@ hr {
   font-weight: 900;
   margin-bottom: 15px;
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .dashboard_admin_wrap p {
   color: #3c3c3c;
@@ -13956,7 +13966,7 @@ hr {
 .order_tracking_section p {
   font-size: 18px;
   margin-bottom: 30px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .order_tracking_section .form_item {
   border-radius: 45px;
@@ -14093,7 +14103,7 @@ hr {
   color: #707070;
   font-size: 20px;
   margin-bottom: 15px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .thankyou_wrap .transaction_id {
   display: block;
@@ -14335,7 +14345,7 @@ hr {
 .forget_password_section p {
   font-size: 18px;
   margin-bottom: 25px;
-  font-family: "Roboto", sans-serif;
+ font-family: var(--font-din), sans-serif !important;
 }
 .forget_password_section .forget_password_form .form_item {
   margin-bottom: 10px;
@@ -16518,7 +16528,7 @@ hr {
     color: #999999;
     content: "";
     font-weight: 400;
-    font-family: "Font Awesome 5 Pro";
+   font-family: var(--font-din), sans-serif !important;
   }
 
   .megamenu .homepage_list a {
@@ -19050,7 +19060,7 @@ hr {
 .text-brown {
  color: #FFFFFF;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para legibilidad sobre el fondo */
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-din), sans-serif !important;
  
   text-transform: uppercase;
 }
