@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import clienteAxios from "../../config/axios";
+import clienteAxios from "../../../config/axios";
 
 
 const Faq = async () => {

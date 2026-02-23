@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import clienteAxios from "../../config/axios";
+import clienteAxios from "../../../config/axios";
 
 import { toast } from 'sonner';
 

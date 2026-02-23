@@ -4,13 +4,13 @@ import { useState } from "react";
 
 import Link from "next/link";
 
-import clienteAxios from "../../../../../config/axios";
-
 import Modal from 'react-modal';
 
 import Select from "react-select";
 
-import { useCartStore } from '../../../../../store/cart';
+import clienteAxios from "../../../../../../config/axios";
+
+import { useCartStore } from '../../../../../../store/cart';
 
 import { toast } from 'sonner';
 

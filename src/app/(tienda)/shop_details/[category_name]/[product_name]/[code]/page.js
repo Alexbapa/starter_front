@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 
-import clienteAxios from "../../../../../config/axios";
+import clienteAxios from "../../../../../../config/axios";
 
 import { ProductCard } from "./productCard";
 import { RelatedProducts } from "./relatedProducts";

@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import clienteAxios from "../../../../config/axios";
+import clienteAxios from "../../../../../config/axios";
+import { ProductPreviewCard } from "../../../../../components/productPreviewCard";
 
 
 import { CategorySelector } from "./categorySelector";
 import { BrandSelector } from "./brandSelector";
-import {ProductPreviewCard} from "../../../../components/productPreviewCard"
 
 const AllCategories = async ({ params }) => {
   const getCategories = async () => {

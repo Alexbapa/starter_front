@@ -4,15 +4,13 @@ import React, { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import clienteAxios from "../../config/axios";
+import clienteAxios from "../../../config/axios";
+import { useCartStore } from '../../../store/cart';
+import enviatodoService from '../../../services/enviatodoService';
 
 import Select from "react-select";
 
 import { toast } from 'sonner';
-
-import { useCartStore } from '../../store/cart';
-
-import { cotizarEnvio, generarGuia } from "../../services/enviatodoService";
 
 import { CardPayment } from '@mercadopago/sdk-react';
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import {ProductPreviewCard} from "../../../../../components/productPreviewCard"
+import { ProductPreviewCard } from "../../../../../../components/productPreviewCard";
 
 export const RelatedProducts = ({ productosRelacionados, codigo }) => {
   return (
