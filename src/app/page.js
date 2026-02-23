@@ -1,21 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-// 1. Importamos las imágenes directamente desde src/images
-// 1. Importamos usando rutas relativas (subimos un nivel con ../)
-import bgStarter from "../images/banner/proximamente.png"; 
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
+import bgStarter from "../images/banner/proximamente.png";
 import logoStarter from "../images/logo/Logo_redondo_alta.png";
 
 export default function ComingSoon() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    // Configura la fecha de lanzamiento para el viernes 27 de febrero de 2026 a las 00:00 hrs
-    const targetDate = new Date("2026-02-27T00:00:00").getTime();
+
+    const targetDate = new Date("2026-02-27T23:59:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -28,9 +33,11 @@ export default function ComingSoon() {
 
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        hours: Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        ),
         minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
       });
     }, 1000);
 
@@ -41,42 +48,80 @@ export default function ComingSoon() {
 
   return (
     <main style={styles.container}>
-      {/* 1. Capa de Imagen de Fondo (Oscurecida) */}
-      <div style={styles.bgImageContainer}>
+      {/* Background con zoom cinematic */}
+      <motion.div
+        style={styles.bgImageContainer}
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.08 }}
+        transition={{ duration: 20, ease: "easeOut" }}
+      >
         <Image
-          src={bgStarter} // Asegúrate que este sea el nombre correcto
+          src={bgStarter}
           alt="Starter Streetwear Background"
           fill
           priority
-          style={{ objectFit: 'cover', filter: 'brightness(0.4)' }} // brightness(0.4) oscurece la imagen
+          style={{
+            objectFit: "cover",
+            filter: "brightness(0.45) contrast(1.1)",
+          }}
         />
-      </div>
+      </motion.div>
 
-      {/* 2. Capa de Efecto Radial (Viñeta y círculos desde el centro) */}
+      {/* Overlay más profundo */}
       <div style={styles.overlay}></div>
 
-      {/* 3. Contenido Principal */}
-      <div style={styles.content}>
-        {/* Logo Animado */}
+      {/* Grain texture */}
+      <div style={styles.noise}></div>
+
+      <motion.div
+        style={styles.content}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+      >
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1 }}
           style={styles.logoContainer}
         >
-        <Image
-            src={logoStarter}
-            alt="Starter Logo"
-            width={220} // Un ancho que respeta el "breathing space" del manual
-            height={155} // Alto proporcional para que no se deforme
-            priority
-            style={{ 
-              objectFit: 'contain', // Asegura que el logo se vea completo
-              mixBlendMode: 'screen', // ¡La magia! Vuelve transparente el fondo negro del JPG
-            }}
-          />
+         <motion.div
+  style={{
+    width: 230,
+    height: 230,
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+  animate={{
+    boxShadow: [
+      "0 0 0px rgba(255,255,255,0)",
+      "0 0 60px rgba(255,255,255,0.18)",
+      "0 0 0px rgba(255,255,255,0)",
+    ],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+  }}
+>
+            <Image
+              src={logoStarter}
+              alt="Starter Logo"
+              width={220}
+              height={155}
+              priority
+              style={{
+                objectFit: "contain",
+                mixBlendMode: "screen",
+              }}
+            />
+          </motion.div>
         </motion.div>
-        
+
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -86,138 +131,165 @@ export default function ComingSoon() {
           STREETWEAR COLLECTION // DROP 01
         </motion.p>
 
-        {/* Temporizador Animado */}
+        {/* Línea animada */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ width: 0 }}
+          animate={{ width: "120px" }}
+          transition={{ duration: 1, delay: 0.6 }}
+          style={styles.divider}
+        />
+
+        {/* Timer */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           style={styles.timerContainer}
         >
-          <div style={styles.timeBlock}>
-            <span style={styles.timeNumber}>{timeLeft.days}</span>
-            <span style={styles.timeLabel}>DÍAS</span>
-          </div>
+          {renderBlock(timeLeft.days, "DÍAS")}
           <span style={styles.colon}>:</span>
-          <div style={styles.timeBlock}>
-            <span style={styles.timeNumber}>{timeLeft.hours.toString().padStart(2, '0')}</span>
-            <span style={styles.timeLabel}>HRS</span>
-          </div>
+          {renderBlock(
+            timeLeft.hours.toString().padStart(2, "0"),
+            "HRS"
+          )}
           <span style={styles.colon}>:</span>
-          <div style={styles.timeBlock}>
-            <span style={styles.timeNumber}>{timeLeft.minutes.toString().padStart(2, '0')}</span>
-            <span style={styles.timeLabel}>MIN</span>
-          </div>
+          {renderBlock(
+            timeLeft.minutes.toString().padStart(2, "0"),
+            "MIN"
+          )}
           <span style={styles.colon}>:</span>
-          <div style={styles.timeBlock}>
-            <span style={styles.timeNumber}>{timeLeft.seconds.toString().padStart(2, '0')}</span>
-            <span style={styles.timeLabel}>SEG</span>
-          </div>
+          {renderBlock(
+            timeLeft.seconds.toString().padStart(2, "0"),
+            "SEG"
+          )}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          style={styles.footerText}
         >
-          <p style={styles.footerText}>LA CALLE NOS ESPERA. PREPÁRATE.</p>
-        </motion.div>
-      </div>
+          LA CALLE NOS ESPERA. PREPÁRATE.
+        </motion.p>
+      </motion.div>
     </main>
+  );
+}
+
+function renderBlock(value, label) {
+  return (
+    <div style={styles.timeBlock}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={value}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          style={styles.timeNumber}
+        >
+          {value}
+        </motion.span>
+      </AnimatePresence>
+      <span style={styles.timeLabel}>{label}</span>
+    </div>
   );
 }
 
 const styles = {
   container: {
-    position: 'relative',
-    height: '100vh',
-    width: '100vw',
-    backgroundColor: '#000000', // Fondo negro base
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: 'var(--font-din), sans-serif',
-    overflow: 'hidden',
+    position: "relative",
+    height: "100vh",
+    width: "100vw",
+    backgroundColor: "#000",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "var(--font-din), sans-serif",
+    overflow: "hidden",
   },
   bgImageContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     zIndex: 0,
   },
   overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    // Este degradado crea el efecto de "círculos desde el centro" y oscurece los bordes
-    backgroundImage: 'radial-gradient(circle at center, transparent 10%, rgba(0,0,0,0.6) 50%, #000000 100%)',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    background:
+      "radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 60%, #000 100%)",
+    zIndex: 1,
+  },
+  noise: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    backgroundImage:
+      "url('https://grainy-gradients.vercel.app/noise.svg')",
+    opacity: 0.04,
     zIndex: 1,
   },
   content: {
-    position: 'relative',
+    position: "relative",
     zIndex: 2,
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 'clamp(1.5rem, 3vw, 2rem)', // Escala el espacio entre elementos
-    color: '#ffffff',
-    width: '100%',
-    padding: '0 1.5rem', // Evita que los textos toquen los bordes del celular
-    boxSizing: 'border-box',
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "2rem",
+    color: "#fff",
+    padding: "0 1.5rem",
   },
-  logoContainer: {
-    marginBottom: 'clamp(0.5rem, 2vw, 1rem)',
-  },
+  logoContainer: {},
   subtitle: {
-    fontSize: 'clamp(0.65rem, 2.5vw, 1rem)', // Se reduce en móviles
-    fontWeight: '400',
-    letterSpacing: 'clamp(3px, 1.5vw, 6px)', // Menos espaciado en móviles para que no se rompa la línea
-    color: '#cccccc', 
-    margin: 0,
+    fontSize: "clamp(0.7rem, 2vw, 1rem)",
+    letterSpacing: "5px",
+    color: "#ccc",
+  },
+  divider: {
+    height: "1px",
+    backgroundColor: "#ffffff",
+    opacity: 0.3,
   },
   timerContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'start',
-    gap: 'clamp(0.5rem, 2.5vw, 1.5rem)', // Acerca los números en pantallas pequeñas
-    marginTop: 'clamp(0.5rem, 2vw, 1rem)',
+    display: "flex",
+    gap: "1.5rem",
+    marginTop: "1rem",
+    padding: "1.5rem 2rem",
+    backdropFilter: "blur(10px)",
+    background: "rgba(255,255,255,0.05)",
+    borderRadius: "16px",
+    border: "1px solid rgba(255,255,255,0.1)",
   },
   timeBlock: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    minWidth: 'clamp(50px, 12vw, 80px)', // Mantiene el bloque estable para que no baile el texto
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    minWidth: "70px",
   },
   timeNumber: {
-    fontSize: 'clamp(2.5rem, 10vw, 4rem)', // 2.5rem min en móvil, 4rem max en PC
-    fontWeight: '800',
-    lineHeight: '1',
-    fontVariantNumeric: 'tabular-nums', 
+    fontSize: "clamp(2.5rem, 6vw, 4rem)",
+    fontWeight: "800",
+    lineHeight: 1,
+    textShadow: "0 0 20px rgba(255,255,255,0.15)",
   },
   timeLabel: {
-    fontSize: 'clamp(0.6rem, 1.5vw, 0.75rem)',
-    fontWeight: '700',
-    letterSpacing: 'clamp(1.5px, 1vw, 3px)',
-    color: '#999999', 
-    marginTop: '0.75rem',
+    fontSize: "0.7rem",
+    letterSpacing: "2px",
+    color: "#aaa",
+    marginTop: "0.5rem",
   },
   colon: {
-    fontSize: 'clamp(2rem, 8vw, 3.5rem)', // Los dos puntos también se encogen
-    fontWeight: '800',
-    lineHeight: '1',
-    color: '#ffffff',
-    marginTop: '-5px',
+    fontSize: "3rem",
+    fontWeight: "800",
+    opacity: 0.6,
   },
   footerText: {
-    fontSize: 'clamp(0.7rem, 2vw, 0.9rem)',
-    fontWeight: '600',
-    letterSpacing: 'clamp(1.5px, 1vw, 3px)',
-    color: '#ffffff',
-    marginTop: 'clamp(1.5rem, 4vw, 2rem)',
-    textTransform: 'uppercase',
-  }
+    fontSize: "0.8rem",
+    letterSpacing: "3px",
+    marginTop: "2rem",
+  },
 };
