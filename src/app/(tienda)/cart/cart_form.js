@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 import { CardPayment } from '@mercadopago/sdk-react';
 
 import { initMercadoPago } from '@mercadopago/sdk-react'
-initMercadoPago('TEST-be465b7a-f0a8-4dd6-a8c4-f5ce29602597', {locale: 'es-MX'}); //'YOUR_PUBLIC_KEY')
+initMercadoPago('APP_USR-441bd0d4-dc77-49f7-a538-7a918194e538', {locale: 'es-MX'}); //'YOUR_PUBLIC_KEY')
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
