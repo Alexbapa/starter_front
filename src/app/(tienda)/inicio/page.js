@@ -158,7 +158,7 @@ const Page = async () => {
                   <h2 className="title_text text-pink-light fontPlantagenet" style={{
     color: "#ffff",
   }} >
-                    El StreetWare de México
+                    El StreetWear de México
                   </h2>
                   <p className="mb-0">Elige tu estilo</p>
                 </div>
