@@ -27,7 +27,7 @@ export const CartForm = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
+  if (!mounted || !hasHydrated) {
     return (
       <div className="text-center py-5">
         <div className="spinner-border text-primary" role="status">
@@ -38,6 +38,8 @@ export const CartForm = () => {
   }
 
   const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
+  const hasHydrated = useCartStore.persist.hasHydrated();
+  
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
   const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
