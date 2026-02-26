@@ -1,6 +1,24 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+// Storage personalizado para TypeScript
+const customStorage = {
+  getItem: (name) => {
+    const item = typeof window !== 'undefined' ? localStorage.getItem(name) : null;
+    return item ? JSON.parse(item) : null;
+  },
+  setItem: (name, value) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(name, JSON.stringify(value));
+    }
+  },
+  removeItem: (name) => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(name);
+    }
+  }
+};
+
 export const useCartStore = create(persist(
   (set, get) => ({
     cart: [],
@@ -153,7 +171,7 @@ export const useCartStore = create(persist(
   }),
   {
     name: 'cart-storage', // name of item in storage (must be unique)
-    storage: typeof window !== 'undefined' ? localStorage : undefined, // solo en cliente
+    storage: customStorage, // storage personalizado para TypeScript
     skipHydration: true, // importante para SSR
-  }
+  } as const
 ))
