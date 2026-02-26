@@ -369,12 +369,9 @@ export const CartForm = () => {
                   }
 
                   {cart && cart.length > 0 && viewMPbutton === true ?
-                    (<CardPayment
-                      initialization={{ amount: cart_total }}
-                      onSubmit={onSubmit}
-                      onReady={onReady}
-                      onError={onError}
-                    />
+                    (
+                    
+                    <div>Botón Mercado Pago</div>
                     )
                     : (<React.Fragment key="empty-mp"></React.Fragment>)
                   }
