@@ -580,7 +580,7 @@ export const CartForm = () => {
                     
 
                   </div>
-                  ):(<></>)
+                  ):(<React.Fragment key="empty-terms"></React.Fragment>)
                   }
                   </li>
                   <li>
@@ -590,7 +590,7 @@ export const CartForm = () => {
                           (
                           <button className="btn btn_primary text-uppercase" onClick={() => mostrarMPbutton()} >Continuar</button>
                           )
-                          :(<></>)
+                          :(<React.Fragment key="empty-continue"></React.Fragment>)
                          }
 
                          {cart && cart.length > 0 && viewMPbutton === true ?
@@ -601,7 +601,7 @@ export const CartForm = () => {
                           onError={onError}
                           />
                          )
-                         :(<></>)
+                         :(<React.Fragment key="empty-mp"></React.Fragment>)
                          }
                   </div>   
                   </li>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import React from "react";
 
 import clienteAxios from "../config/axios";
 import logoStarter from "../images/logo/Logo_Starter_Redondo.png";
@@ -77,7 +78,7 @@ export async function Footer() {
                         </li>
                        )
                       :
-                      (<></>)
+                      (<React.Fragment key={`empty-${index}`}></React.Fragment>)
                       }
                       )}
                   </ul>
