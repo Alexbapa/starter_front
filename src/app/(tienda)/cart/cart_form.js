@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 import { CardPayment } from '@mercadopago/sdk-react';
 
 import { initMercadoPago } from '@mercadopago/sdk-react'
-initMercadoPago('APP_USR-441bd0d4-dc77-49f7-a538-7a918194e538', {locale: 'es-MX'}); //'YOUR_PUBLIC_KEY')
+initMercadoPago('APP_USR-441bd0d4-dc77-49f7-a538-7a918194e538', { locale: 'es-MX' }); //'YOUR_PUBLIC_KEY')
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -52,12 +52,16 @@ export const CartForm = () => {
   }
 
   // Obtener todas las funciones del store al principio
-  const store = useCartStore();
-  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = store;
-  const deleteCartItem = store.remove_cart_item;
-  const checkDiscountCode = store.check_discount_code;
-  const clearDiscountCode = store.clear_discount_code;
-  const clearCart = store.clear_cart;
+  const cart = useCartStore(state => state.cart);
+  const cart_subtotal = useCartStore(state => state.cart_subtotal);
+  const cart_descuento = useCartStore(state => state.cart_descuento);
+  const cart_iva = useCartStore(state => state.cart_iva);
+  const cart_total = useCartStore(state => state.cart_total);
+
+  const deleteCartItem = useCartStore(state => state.remove_cart_item);
+  const checkDiscountCode = useCartStore(state => state.check_discount_code);
+  const clearDiscountCode = useCartStore(state => state.clear_discount_code);
+  const clearCart = useCartStore(state => state.clear_cart);
 
   // Debug logging
   useEffect(() => {
@@ -65,9 +69,6 @@ export const CartForm = () => {
     console.log('Cart:', cart);
   }, [mounted, cart]);
 
-  
-
-  
 
   const mostrarMensaje = (mensaje) => {
     toast.error(mensaje);
@@ -78,22 +79,22 @@ export const CartForm = () => {
   };
 
   const mostrarMPbutton = () => {
-    if(datos_entrega_nombre === "") {
-      mostrarMensaje("Debes escribir el nombre en datos de entrega");    
-    }else if(datos_entrega_direccion === "") {
-      mostrarMensaje("Debes escribir la direccion en datos de entrega");    
-    }else if(datos_entrega_codigo_postal === "") {
-      mostrarMensaje("Debes escribir el código postal en datos de entrega");    
-    }else if(datos_entrega_correo === "") {
-      mostrarMensaje("Debes escribir el correo en datos de entrega");    
-    }else if(datos_entrega_telefono === "") {
-      mostrarMensaje("Debes escribir el teléfono en datos de entrega");    
-    }else if(agree === false) {
-      mostrarMensaje("Debes aceptar los terminos y condiciones");    
+    if (datos_entrega_nombre === "") {
+      mostrarMensaje("Debes escribir el nombre en datos de entrega");
+    } else if (datos_entrega_direccion === "") {
+      mostrarMensaje("Debes escribir la direccion en datos de entrega");
+    } else if (datos_entrega_codigo_postal === "") {
+      mostrarMensaje("Debes escribir el código postal en datos de entrega");
+    } else if (datos_entrega_correo === "") {
+      mostrarMensaje("Debes escribir el correo en datos de entrega");
+    } else if (datos_entrega_telefono === "") {
+      mostrarMensaje("Debes escribir el teléfono en datos de entrega");
+    } else if (agree === false) {
+      mostrarMensaje("Debes aceptar los terminos y condiciones");
     } else {
       setViewContinuebutton(false)
       setViewMPbutton(true)
-    }  
+    }
   }
 
   const checkboxHandler = () => {
@@ -107,19 +108,19 @@ export const CartForm = () => {
   const findDiscount = async () => {
     const codigo = document.getElementById("codigo_descuento").value;
 
-    if(codigo === ''){
+    if (codigo === '') {
       mostrarMensaje("Ingresa un código");
       return;
     }
 
     try {
-      let res = await clienteAxios.get(`/codigo/validar/`+codigo);
+      let res = await clienteAxios.get(`/codigo/validar/` + codigo);
 
-      if(res.data.single.length > 0){
+      if (res.data.single.length > 0) {
         checkDiscountCode(res.data.single[0].porcentaje_descuento)
         mostrarAviso("Código aplicado correctamente");
         setCodigoDescuento(codigo)
-      }else{
+      } else {
         mostrarMensaje("Código inválido");
       }
     } catch (error) {
@@ -202,7 +203,7 @@ export const CartForm = () => {
       'cc_rejected_max_attempts': 'Superaste el número máximo de intentos. Intenta más tarde o con otra tarjeta.',
       'cc_rejected_other_reason': 'Pago rechazado. Intenta con otra forma de pago.'
     };
-    
+
     return errorMessages[detail] || `Pago rechazado (${detail}). Intenta nuevamente o con otra forma de pago.`;
   };
 
@@ -236,7 +237,7 @@ export const CartForm = () => {
                             <td>
                               <div className="cart_product">
                                 <div className="cart_product_img">
-                                  <img src={`${item.imagen}?v=${item.imagen.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`} alt={item.nombre} />
+                                  <img src={`${item.imagen}?v=${item.imagen.split('').reduce((a, b) => (((a << 5) - a) + b.charCodeAt(0)) | 0, 0)}`} alt={item.nombre} />
                                 </div>
                                 <div className="cart_product_content">
                                   <h4>{item.nombre}</h4>
@@ -358,26 +359,26 @@ export const CartForm = () => {
                 </div>
               </div>
               <div className="cart_payment">
-                <div className="btn_wrap pt-0 text-center" style={{marginTop:"20px"}}>    
+                <div className="btn_wrap pt-0 text-center" style={{ marginTop: "20px" }}>
 
-                         {cart && cart.length > 0 && viewContinuebutton === true ?
-                          (
-                          <button className="btn btn_primary text-uppercase" onClick={() => mostrarMPbutton()} >Continuar</button>
-                          )
-                          :(<React.Fragment key="empty-continue"></React.Fragment>)
-                         }
+                  {cart && cart.length > 0 && viewContinuebutton === true ?
+                    (
+                      <button className="btn btn_primary text-uppercase" onClick={() => mostrarMPbutton()} >Continuar</button>
+                    )
+                    : (<React.Fragment key="empty-continue"></React.Fragment>)
+                  }
 
-                         {cart && cart.length > 0 && viewMPbutton === true ?
-                          (<CardPayment
-                          initialization={{amount:cart_total}}
-                          onSubmit={onSubmit}
-                          onReady={onReady}
-                          onError={onError}
-                          />
-                         )
-                         :(<React.Fragment key="empty-mp"></React.Fragment>)
-                         }
-                </div>   
+                  {cart && cart.length > 0 && viewMPbutton === true ?
+                    (<CardPayment
+                      initialization={{ amount: cart_total }}
+                      onSubmit={onSubmit}
+                      onReady={onReady}
+                      onError={onError}
+                    />
+                    )
+                    : (<React.Fragment key="empty-mp"></React.Fragment>)
+                  }
+                </div>
               </div>
             </div>
           </div>
