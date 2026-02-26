@@ -26,6 +26,8 @@ export const CartForm = () => {
 
   useEffect(() => {
     setMounted(true);
+    // Activar hidratación manual del store
+    useCartStore.persist.rehydrate();
   }, []);
 
   const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
