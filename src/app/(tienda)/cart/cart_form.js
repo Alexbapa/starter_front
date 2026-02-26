@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useRouter } from "next/navigation";
 
 import clienteAxios from "../../../config/axios";
 import { useCartStore } from '../../../store/cart';
+import { useHydratedStore } from '../../../hooks/useHydratedStore';
 import enviatodoService from '../../../services/enviatodoService';
 
 import Select from "react-select";
@@ -23,8 +24,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const CartForm = () => {
   const router = useRouter();
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore() //debe de ir aqui arriba por ser un hook y evitar errores
+  // Manejar hidratación del store
+  const cartStore = useCartStore();
+  const hydrated = useHydratedStore(cartStore);
+
+  useEffect(() => {
+    setIsHydrated(hydrated);
+  }, [hydrated]);
+
+  // Si no está hidratado, mostrar un loader o nada
+  if (!isHydrated) {
+    return (
+      <div className="text-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    );
+  }
+
+  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = cartStore //debe de ir aqui arriba por ser un hook y evitar errores
 
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
