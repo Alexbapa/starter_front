@@ -130,8 +130,10 @@ export const ProductPreviewCard = ({ item }) => {
           total: parseInt(cantidad) * item.precio,
         });
 
-        document.body.style.overflow = "unset";
-        document.body.style.pointerEvents = "auto";
+        if (typeof window !== 'undefined') {
+          document.body.style.overflow = "unset";
+          document.body.style.pointerEvents = "auto";
+        }
 
         setQuickViewModal(false);
         mostrarAviso("Producto Agregado");
@@ -146,14 +148,18 @@ export const ProductPreviewCard = ({ item }) => {
 
   function closeQuickViewModal() {
     setQuickViewModal(false);
-    document.body.style.overflow = "unset";
-    document.body.style.pointerEvents = "auto";
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = "unset";
+      document.body.style.pointerEvents = "auto";
+    }
   }
 
   function openQuickViewModal() {
     setQuickViewModal(true);
-    document.body.style.overflow = "hidden";
-    document.body.style.pointerEvents = "none";
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = "hidden";
+      document.body.style.pointerEvents = "none";
+    }
   }
 
   const modalCustomStyles = {
@@ -224,7 +230,7 @@ export const ProductPreviewCard = ({ item }) => {
                   .replace(/\s/g, "-")}/${item.codigo}`}
               >
                 <img
-                  src={`${item.foto_principal}?v=${Date.now()}`}
+                  src={`${item.foto_principal}?v=${item.foto_principal.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                   alt={`${item.foto_principal}`}
                   className="img-fluid"
                 />
@@ -251,7 +257,7 @@ export const ProductPreviewCard = ({ item }) => {
                     .replace(/\s/g, "-")}/${item.codigo}`}
                 >
                   <img
-                    src={`${item2.image}?v=${Date.now()}`}
+                    src={`${item2.image}?v=${item2.image.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                     alt={`${item2.image}`}
                     className="img-fluid"
                   />
@@ -290,7 +296,7 @@ export const ProductPreviewCard = ({ item }) => {
               aria-selected="true"
             >
               <img
-                src={`${item.foto_principal}?v=${Date.now()}`}
+                src={`${item.foto_principal}?v=${item.foto_principal.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                 alt={`${item.foto_principal}`}
                 className="img-fluid"
               />
@@ -308,7 +314,7 @@ export const ProductPreviewCard = ({ item }) => {
                 aria-selected="false"
               >
                 <img
-                  src={`${item2.image}?v=${Date.now()}`}
+                  src={`${item2.image}?v=${item2.image.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                   alt={`${item2.image}`}
                   className="img-fluid"
                 />
@@ -397,7 +403,7 @@ export const ProductPreviewCard = ({ item }) => {
                     <div className="col col-lg-6 col-md-8">
                       <div className="sd_image_carousel p-0">
                         <img
-                          src={`${item.foto_principal}?v=${Date.now()}`}
+                          src={`${item.foto_principal}?v=${item.foto_principal.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                           alt={`${item.foto_principal}`}
                           className="img-fluid"
                         />

@@ -12,13 +12,15 @@ import $ from 'jquery';
 
   // back to top - start
   // --------------------------------------------------
-   $(window).on('scroll', function () {
-    if ($(this).scrollTop() > 200) {
-      $('.backtotop:hidden').stop(true, true).fadeIn();
-    } else {
-      $('.backtotop').stop(true, true).fadeOut();
-    }
-  });
+  if (typeof window !== 'undefined') {
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 200) {
+        $('.backtotop:hidden').stop(true, true).fadeIn();
+      } else {
+        $('.backtotop').stop(true, true).fadeOut();
+      }
+    });
+  }
 
   //la funcion esta en components/backtotopbutton
 
@@ -37,37 +39,37 @@ import $ from 'jquery';
 
   // sticky header - start
   // --------------------------------------------------
-  $(window).on('scroll', function () {
-    if ($(this).scrollTop() > 120) {
-      $('.header_section').addClass("sticky")
-      $('.logo_size').addClass("logo_s")
-      $('.logo_size').removeClass("logo_m")
+  if (typeof window !== 'undefined') {
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 120) {
+        $('.header_section').addClass("sticky")
+        $('.logo_size').addClass("logo_s")
+        $('.logo_size').removeClass("logo_m")
 
-      $('.logo_size').removeClass("logo_position_float")
-      $('.logo_size').addClass("logo_position_normal")
+        $('.logo_size').removeClass("logo_position_float")
+        $('.logo_size').addClass("logo_position_normal")
 
-      $('.header_icons_group').removeClass("icons_position_float")
-      $('.header_icons_group').addClass("icons_position_normal")
-      
-      
+        $('.header_icons_group').removeClass("icons_position_float")
+        $('.header_icons_group').addClass("icons_position_normal")
+        
+        
 
-    } else {
-      $('.header_section').removeClass("sticky")
-      $('.logo_size').addClass("logo_m")
-      $('.logo_size').removeClass("logo_s")
+      } else {
+        $('.header_section').removeClass("sticky")
+        $('.logo_size').addClass("logo_m")
+        $('.logo_size').removeClass("logo_s")
 
-      $('.logo_size').addClass("logo_position_float")
-      $('.logo_size').removeClass("logo_position_normal")
+        $('.logo_size').addClass("logo_position_float")
+        $('.logo_size').removeClass("logo_position_normal")
 
-      $('.header_icons_group').addClass("icons_position_float")
-      $('.header_icons_group').removeClass("icons_position_normal")
+        $('.header_icons_group').addClass("icons_position_float")
+        $('.header_icons_group').removeClass("icons_position_normal")
 
-    }
-  });
+      }
+    });
+  }
   // sticky header - end
   // --------------------------------------------------
-
-  
 
 
 

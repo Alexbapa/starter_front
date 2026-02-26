@@ -58,9 +58,10 @@ export const CartForm = () => {
 
   const mostrarMPbutton = () => {
     //validamos campos
-    if(costo_envio === "" || costo_envio === 0) {
-      mostrarMensaje("Debes escribir el costo de envío");    
-    }else if(datos_entrega_nombre === "") {
+    // if(costo_envio === "" || costo_envio === 0) {
+    //   mostrarMensaje("Debes escribir el costo de envío");    
+    // }else 
+    if(datos_entrega_nombre === "") {
       mostrarMensaje("Debes escribir el nombre en datos de entrega");    
     }else if(datos_entrega_direccion === "") {
       mostrarMensaje("Debes escribir la direccion en datos de entrega");    

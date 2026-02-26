@@ -17,13 +17,17 @@ export const NavbarOptions = ({ categories }) => {
   const pathname = usePathname();
 
 function openNav() {
-  document.getElementById("mySidenav").classList.add("open");
-  document.body.style.overflow = "hidden";
+  if (typeof window !== 'undefined') {
+    document.getElementById("mySidenav").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").classList.remove("open");
-  document.body.style.overflow = "auto";
+  if (typeof window !== 'undefined') {
+    document.getElementById("mySidenav").classList.remove("open");
+    document.body.style.overflow = "auto";
+  }
 }
 
   return (
@@ -85,7 +89,7 @@ function closeNav() {
                                   style={{ backgroundColor: "transparent" }}
                                 >
                                   <img
-                                    src={`${item.imagen}?v=${Date.now()}`}
+                                    src={`${item.imagen}?v=${item.imagen.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                                     style={{ height: "60px" }}
                                     alt={item.imagen}
                                     className="img-fluid"
@@ -132,7 +136,7 @@ function closeNav() {
                                   style={{ backgroundColor: "transparent" }}
                                 >
                                   <img
-                                    src={`${item.imagen}?v=${Date.now()}`}
+                                    src={`${item.imagen}?v=${item.imagen.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                                     style={{ height: "60px" }}
                                     alt={item.imagen}
                                     className="img-fluid"
@@ -238,7 +242,7 @@ function closeNav() {
                 className="submenu"
               >
                 <img
-                  src={`${item.imagen}?v=${Date.now()}`}
+                  src={`${item.imagen}?v=${item.imagen.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
                   alt={item.imagen}
                   style={{
                     height: "30px",
