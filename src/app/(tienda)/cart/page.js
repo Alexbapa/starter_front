@@ -1,6 +1,6 @@
 import { CartForm } from "./cart_form";
 
-const Cart = async () => {
+const Cart = () => {
 
        
   return (
