@@ -56,7 +56,7 @@ export const CartForm = () => {
     toast.success(mensaje);
   };
 
-  const mostrarMPbutton = () => {
+  const mostrarMPbutton = async () => {
     //validamos campos
     if (datos_entrega_nombre === "") {
       mostrarMensaje("Debes escribir el nombre en datos de entrega");
@@ -71,6 +71,7 @@ export const CartForm = () => {
     } else if (agree === false) {
       mostrarMensaje("Debes aceptar los terminos y condiciones");
     } else {
+      await calcularEnvio()
       setViewContinuebutton(false)
       setViewMPbutton(true)
     }
@@ -174,7 +175,7 @@ export const CartForm = () => {
       subtotal: cart_subtotal,
       descuento: cart_descuento,
       iva: cart_iva,
-      total: cart_total,
+      total: cart_total + costo_envio,
       descripcion: cart,
       usuario: "Cliente Web",
       entregar_a: datos_entrega_nombre,
@@ -379,6 +380,27 @@ export const CartForm = () => {
 
   };
 
+  const calcularEnvio = async () => {
+
+    if (datos_entrega_codigo_postal === "") {
+      mostrarMensaje("Debes escribir el código postal")
+      return
+    }
+
+    try {
+      let res = await clienteAxios.post("/pedido/shipping/calculate", {
+        cart,
+        codigo_postal: datos_entrega_codigo_postal
+      })
+
+      setCostoEnvio(res.data.costo_envio)
+
+      mostrarAviso("Costo de envío calculado")
+
+    } catch (error) {
+      mostrarMensaje("Error calculando envío")
+    }
+  }
 
   const customStyles = {
     control: (base, state) => ({
@@ -498,7 +520,10 @@ export const CartForm = () => {
                     <span>I.V.A.</span> <span>$ {cart_iva.toFixed(2)}</span>
                   </li>
                   <li style={{ fontWeight: "800" }}>
-                    <span>Total</span> <span>$ {cart_total.toFixed(2)}</span>
+                    <span>Envío</span> <span>$ {costo_envio.toFixed(2)}</span>
+                  </li>
+                  <li style={{ fontWeight: "800" }}>
+                    <span>Total</span> <span>$ {(cart_total + costo_envio).toFixed(2)}</span>
                   </li>
 
 
@@ -593,7 +618,7 @@ export const CartForm = () => {
 
                       {cart && cart.length > 0 && viewMPbutton === true ?
                         (<CardPayment
-                          initialization={{ amount: cart_total }}
+                          initialization={{ amount: cart_total + costo_envio }}
                           onSubmit={onSubmit}
                           onReady={onReady}
                           onError={onError}
