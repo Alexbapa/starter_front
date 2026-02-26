@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 export const useCartStore = create(persist((set, get) => ({
   cart: [],
@@ -156,13 +156,10 @@ export const useCartStore = create(persist((set, get) => ({
       cart_porcentaje_descuento: 0,
     }));
   }
+
 }),
 {
   name: 'cart-storage', // name of the item in the storage (must be unique)
-  storage: createJSONStorage(() =>
-    typeof window !== 'undefined' ? localStorage : undefined
-  ),
-  skipHydration: true,
 }
 ))
 

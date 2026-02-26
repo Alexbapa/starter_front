@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -23,35 +23,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const CartForm = () => {
   const router = useRouter();
-  const [isHydrated, setIsHydrated] = useState(false);
 
-  // Obtener datos del store de forma segura
-  const cart = useCartStore((state) => state.cart);
-  const cart_subtotal = useCartStore((state) => state.cart_subtotal);
-  const cart_descuento = useCartStore((state) => state.cart_descuento);
-  const cart_iva = useCartStore((state) => state.cart_iva);
-  const cart_total = useCartStore((state) => state.cart_total);
+  // Obtener datos del store de forma simple
+  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
 
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
   const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
   const clearCart = useCartStore((state) => state.clear_cart)
-
-  // Efecto para manejar hidratación
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
-
-  // Si no está hidratado, mostrar un loader
-  if (!isHydrated) {
-    return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </div>
-      </div>
-    );
-  }
 
   const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
   const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
