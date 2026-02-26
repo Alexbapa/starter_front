@@ -30,18 +30,18 @@ export const CartForm = () => {
     setMounted(true);
   }, []);
 
-  // Obtener datos del store de forma simple
+  // Si no está montado, no renderizar nada (evita pantalla en blanco y error React #310)
+  if (!mounted) {
+    return null;
+  }
+
+  // Obtener datos del store de forma simple (después del check de mounted)
   const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
 
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
   const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
   const clearCart = useCartStore((state) => state.clear_cart)
-
-  // Si no está montado, no renderizar nada (evita pantalla en blanco)
-  if (!mounted) {
-    return null;
-  }
 
   const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
   const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
