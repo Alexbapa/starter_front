@@ -89,7 +89,6 @@ function closeNav() {
                                     style={{ height: "60px" }}
                                     alt={item.imagen}
                                     className="img-fluid"
-                                    unoptimized={true}
                                   />
                                 </span>
                                 <span className="item_title">
@@ -137,7 +136,6 @@ function closeNav() {
                                     style={{ height: "60px" }}
                                     alt={item.imagen}
                                     className="img-fluid"
-                                    unoptimized={true}
                                   />
                                 </span>
                                 <span className="item_title">
@@ -247,7 +245,6 @@ function closeNav() {
                     width: "30px",
                     borderRadius: "50px",
                   }}
-                  unoptimized={true}
                 />{" "}
                 {item.nombre}
               </Link>
