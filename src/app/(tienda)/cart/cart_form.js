@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -23,6 +23,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const CartForm = () => {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  // Esperar a que el componente esté montado (cliente)
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Obtener datos del store de forma simple
   const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
@@ -31,6 +37,11 @@ export const CartForm = () => {
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
   const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
   const clearCart = useCartStore((state) => state.clear_cart)
+
+  // Si no está montado, no renderizar nada (evita pantalla en blanco)
+  if (!mounted) {
+    return null;
+  }
 
   const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
   const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
