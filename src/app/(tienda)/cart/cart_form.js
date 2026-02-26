@@ -23,9 +23,33 @@ export const CartForm = () => {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
+  const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
+  const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
+  const [datos_entrega_codigo_postal, setDatosEntregaCodigoPostal] = useState('');
+  const [datos_entrega_correo, setDatosEntregaCorreo] = useState('');
+  const [datos_entrega_telefono, setDatosEntregaTelefono] = useState('');
+  const [agree, setAgree] = useState(false);
+
+  const [formaEntrega, setFormaEntrega] = useState('Envío a Domicilio');
+
+  const [costo_envio, setCostoEnvio] = useState(0);
+  const [viewMPbutton, setViewMPbutton] = useState(false);
+  const [viewContinuebutton, setViewContinuebutton] = useState(true);
+  const [codigo_descuento, setCodigoDescuento] = useState('');
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  if (!mounted) {
+    return (
+      <div className="text-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    );
+  }
 
   // Obtener todas las funciones del store al principio
   const store = useCartStore();
@@ -41,29 +65,9 @@ export const CartForm = () => {
     console.log('Cart:', cart);
   }, [mounted, cart]);
 
-  if (!mounted) {
-    return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </div>
-      </div>
-    );
-  }
+  
 
-  const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
-  const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
-  const [datos_entrega_codigo_postal, setDatosEntregaCodigoPostal] = useState('');
-  const [datos_entrega_correo, setDatosEntregaCorreo] = useState('');
-  const [datos_entrega_telefono, setDatosEntregaTelefono] = useState('');
-  const [agree, setAgree] = useState(false);
-
-  const [formaEntrega, setFormaEntrega] = useState('Envío a Domicilio');
-
-  const [costo_envio, setCostoEnvio] = useState(0);
-  const [viewMPbutton, setViewMPbutton] = useState(false);
-  const [viewContinuebutton, setViewContinuebutton] = useState(true);
-  const [codigo_descuento, setCodigoDescuento] = useState('');
+  
 
   const mostrarMensaje = (mensaje) => {
     toast.error(mensaje);
