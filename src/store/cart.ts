@@ -1,151 +1,176 @@
 import { create } from 'zustand'
 
-export const useCartStore = create((set, get) => ({
-    cart: [],
-    cart_subtotal: 0,
-    cart_descuento: 0,
-    cart_iva: 0,
-    cart_total: 0,
-    cart_porcentaje_descuento: 0,
+interface CartItem {
+  codigo: string
+  cantidad: number
+  precio: number
+  total: number
+  [key: string]: any
+}
 
-    //funciones 
-    //agregar
-    add_cart_item: (item) => {
+interface CartStore {
+  cart: CartItem[]
+  cart_subtotal: number
+  cart_descuento: number
+  cart_iva: number
+  cart_total: number
+  cart_porcentaje_descuento: number
 
-      //subtotal
-      set((state) => ({
-        cart_subtotal: state.cart_subtotal > 0 ?
-          state.cart_subtotal + (parseInt(item.cantidad) * parseFloat(item.precio))
-          :
-          parseInt(item.cantidad) * parseFloat(item.precio)
-      }));
+  add_cart_item: (item: CartItem) => void
+  remove_cart_item: (index: number) => void
+  check_discount_code: (percentage: number) => void
+  clear_discount_code: () => void
+  clear_cart: () => void
+}
 
-      //descuento
-      set((state) => ({
-        cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
-      }));
+export const useCartStore = create<CartStore>((set, get) => ({
 
-      //iva por el momento no cobran iva
-      set((state) => ({
-        cart_iva: 0
-      }));
+  cart: [],
+  cart_subtotal: 0,
+  cart_descuento: 0,
+  cart_iva: 0,
+  cart_total: 0,
+  cart_porcentaje_descuento: 0,
 
-      //total
-      set((state) => ({
-        cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
-      }));
+  // =========================
+  // AGREGAR ITEM
+  // =========================
+  add_cart_item: (item) => {
+    set((state) => {
 
-      //agrupar o agregar a cart
-      let encontrado;
-      set((state) => ({
-        cart: state.cart.map((element) => {
-          if (item.codigo === element.codigo) {
-            encontrado = true;
-            const suma = parseInt(element.cantidad) + parseInt(item.cantidad);
-            element.cantidad = suma;
-            element.total = suma * element.precio;
+      const cantidad = Number(item.cantidad)
+      const precio = Number(item.precio)
+
+      let encontrado = false
+
+      const nuevoCart = state.cart.map((element) => {
+        if (element.codigo === item.codigo) {
+          encontrado = true
+          const nuevaCantidad = Number(element.cantidad) + cantidad
+
+          return {
+            ...element,
+            cantidad: nuevaCantidad,
+            total: nuevaCantidad * Number(element.precio)
           }
-          return element;
-        })
-      }));
-      if (encontrado != true) {
-        set((state) => ({
-          cart: [...state.cart, item],
-        }));
+        }
+        return element
+      })
+
+      const cartFinal = encontrado
+        ? nuevoCart
+        : [...nuevoCart, {
+            ...item,
+            cantidad,
+            precio,
+            total: cantidad * precio
+          }]
+
+      const nuevoSubtotal = cartFinal.reduce(
+        (acc, item) => acc + Number(item.total),
+        0
+      )
+
+      const nuevoDescuento =
+        nuevoSubtotal * (state.cart_porcentaje_descuento * 0.01)
+
+      const nuevoIva = 0
+
+      const nuevoTotal =
+        nuevoSubtotal - nuevoDescuento + nuevoIva
+
+      return {
+        cart: cartFinal,
+        cart_subtotal: nuevoSubtotal,
+        cart_descuento: nuevoDescuento,
+        cart_iva: nuevoIva,
+        cart_total: nuevoTotal
       }
-    },
+    })
+  },
 
-    //borrar
-    remove_cart_item: (index) => {
+  // =========================
+  // ELIMINAR ITEM
+  // =========================
+  remove_cart_item: (index) => {
+    set((state) => {
 
-      //subtotal
-      set((state) => ({
-        cart_subtotal: state.cart_subtotal - parseFloat(state.cart[index]['total'])
-      }));
+      const nuevoCart = state.cart.filter((_, i) => i !== index)
 
-      //descuento
-      set((state) => ({
-        cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
-      }));
+      const nuevoSubtotal = nuevoCart.reduce(
+        (acc, item) => acc + Number(item.total),
+        0
+      )
 
-      //iva por el momento no cobran iva
-      set((state) => ({
-        cart_iva: 0
-      }));
+      const nuevoDescuento =
+        nuevoSubtotal * (state.cart_porcentaje_descuento * 0.01)
 
-      //total
-      set((state) => ({
-        cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
-      }));
+      const nuevoIva = 0
 
-      //cart
-      set((state) => ({
-        ...state,
-        cart: state.cart.filter((item, idx) => idx != index)
-      }));
+      const nuevoTotal =
+        nuevoSubtotal - nuevoDescuento + nuevoIva
 
-    },
+      return {
+        cart: nuevoCart,
+        cart_subtotal: nuevoSubtotal,
+        cart_descuento: nuevoDescuento,
+        cart_iva: nuevoIva,
+        cart_total: nuevoTotal
+      }
+    })
+  },
 
-    //aplicar codigo de descuento
-    check_discount_code: (percentage) => {
+  // =========================
+  // APLICAR DESCUENTO
+  // =========================
+  check_discount_code: (percentage) => {
+    set((state) => {
 
-      //porcentaje
-      set((state) => ({
-        cart_porcentaje_descuento: percentage
-      }));
+      const nuevoDescuento =
+        state.cart_subtotal * (percentage * 0.01)
 
-      //descuento
-      set((state) => ({
-        cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
-      }));
+      const nuevoTotal =
+        state.cart_subtotal - nuevoDescuento + state.cart_iva
 
-      //iva por el momento no cobran iva
-      set((state) => ({
-        cart_iva: 0
-      }));
+      return {
+        cart_porcentaje_descuento: percentage,
+        cart_descuento: nuevoDescuento,
+        cart_total: nuevoTotal
+      }
+    })
+  },
 
-      //total
-      set((state) => ({
-        cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
-      }));
+  // =========================
+  // LIMPIAR DESCUENTO
+  // =========================
+  clear_discount_code: () => {
+    set((state) => {
 
-    },
+      const nuevoDescuento = 0
 
-    //reset codigo de descuento
-    clear_discount_code: () => {
+      const nuevoTotal =
+        state.cart_subtotal - nuevoDescuento + state.cart_iva
 
-      //porcentaje
-      set((state) => ({
-        cart_porcentaje_descuento: 0
-      }));
-
-      //descuento
-      set((state) => ({
-        cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
-      }));
-
-      //iva por el momento no cobran iva
-      set((state) => ({
-        cart_iva: 0
-      }));
-
-      //total
-      set((state) => ({
-        cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
-      }));
-
-    },
-
-    //resetear carrito
-    clear_cart: () => {
-      set((state) => ({
-        cart: [],
-        cart_subtotal: 0,
-        cart_descuento: 0,
-        cart_iva: 0,
-        cart_total: 0,
+      return {
         cart_porcentaje_descuento: 0,
-      }));
-    }
+        cart_descuento: nuevoDescuento,
+        cart_total: nuevoTotal
+      }
+    })
+  },
+
+  // =========================
+  // LIMPIAR CARRITO
+  // =========================
+  clear_cart: () => {
+    set({
+      cart: [],
+      cart_subtotal: 0,
+      cart_descuento: 0,
+      cart_iva: 0,
+      cart_total: 0,
+      cart_porcentaje_descuento: 0,
+    })
+  }
 
 }))

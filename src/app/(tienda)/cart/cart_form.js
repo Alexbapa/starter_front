@@ -37,6 +37,23 @@ export const CartForm = () => {
   const [viewContinuebutton, setViewContinuebutton] = useState(true);
   const [codigo_descuento, setCodigoDescuento] = useState('');
 
+
+
+  // Obtener todas las funciones del store al principio
+  const {
+    cart,
+    cart_subtotal,
+    cart_descuento,
+    cart_iva,
+    cart_total,
+    remove_cart_item: deleteCartItem,
+    check_discount_code: checkDiscountCode,
+    clear_discount_code: clearDiscountCode,
+    clear_cart: clearCart,
+  } = useCartStore();
+
+
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -50,18 +67,6 @@ export const CartForm = () => {
       </div>
     );
   }
-
-  // Obtener todas las funciones del store al principio
-  const cart = useCartStore(state => state.cart);
-  const cart_subtotal = useCartStore(state => state.cart_subtotal);
-  const cart_descuento = useCartStore(state => state.cart_descuento);
-  const cart_iva = useCartStore(state => state.cart_iva);
-  const cart_total = useCartStore(state => state.cart_total);
-
-  const deleteCartItem = useCartStore(state => state.remove_cart_item);
-  const checkDiscountCode = useCartStore(state => state.check_discount_code);
-  const clearDiscountCode = useCartStore(state => state.clear_discount_code);
-  const clearCart = useCartStore(state => state.clear_cart);
 
   // Debug logging
   useEffect(() => {
@@ -370,8 +375,13 @@ export const CartForm = () => {
 
                   {cart && cart.length > 0 && viewMPbutton === true ?
                     (
-                    
-                    <div>Botón Mercado Pago</div>
+
+                      <CardPayment
+                        initialization={{ amount: cart_total }}
+                        onSubmit={onSubmit}
+                        onReady={onReady}
+                        onError={onError}
+                      />
                     )
                     : (<React.Fragment key="empty-mp"></React.Fragment>)
                   }
