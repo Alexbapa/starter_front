@@ -26,8 +26,9 @@ const Cart = () => {
         </div>
       </section>
 
+{/*
       <CartForm/>
-
+*/}
 
 
     </main>
