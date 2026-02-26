@@ -1,176 +1,174 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-interface CartItem {
-  codigo: string
-  cantidad: number
-  precio: number
-  total: number
-  [key: string]: any
-}
-
-interface CartStore {
-  cart: CartItem[]
-  cart_subtotal: number
-  cart_descuento: number
-  cart_iva: number
-  cart_total: number
-  cart_porcentaje_descuento: number
-
-  add_cart_item: (item: CartItem) => void
-  remove_cart_item: (index: number) => void
-  check_discount_code: (percentage: number) => void
-  clear_discount_code: () => void
-  clear_cart: () => void
-}
-
-export const useCartStore = create<CartStore>((set, get) => ({
-
+export const useCartStore = create(persist((set,get) => ({
   cart: [],
-  cart_subtotal: 0,
-  cart_descuento: 0,
-  cart_iva: 0,
-  cart_total: 0,
-  cart_porcentaje_descuento: 0,
+  cart_subtotal:0,
+  cart_descuento:0,
+  cart_iva:0,
+  cart_total:0,
+  cart_porcentaje_descuento:0,
 
-  // =========================
-  // AGREGAR ITEM
-  // =========================
+  //funciones 
+  //agregar
   add_cart_item: (item) => {
-    set((state) => {
 
-      const cantidad = Number(item.cantidad)
-      const precio = Number(item.precio)
+    //subtotal
+    set((state) => ({
+     cart_subtotal: state.cart_subtotal > 0 ?
+        state.cart_subtotal + (parseInt(item.cantidad) * parseFloat(item.precio))
+        :
+        parseInt(item.cantidad) * parseFloat(item.precio)
+    }));
 
-      let encontrado = false
+    //descuento
+    set((state) => ({
+       cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
+    }));
 
-      const nuevoCart = state.cart.map((element) => {
-        if (element.codigo === item.codigo) {
-          encontrado = true
-          const nuevaCantidad = Number(element.cantidad) + cantidad
+    //iva por el momento no cobran iva
+    /*
+    set((state) => ({
+      cart_iva: ((parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento)) * .15)
+    }));
+    */
 
-          return {
-            ...element,
-            cantidad: nuevaCantidad,
-            total: nuevaCantidad * Number(element.precio)
-          }
+    //total
+    set((state) => ({ 
+     cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
+    }));
+
+    //agrupar o agregar a cart
+    let encontrado;  
+    set((state) => ({
+      cart: state.cart.map((element) => {
+         if(item.codigo === element.codigo){
+            encontrado = true;
+            const suma = parseInt(element.cantidad) + parseInt(item.cantidad);
+            element.cantidad = suma;
+            element.total =  suma * element.precio;
         }
-        return element
+        return element;
       })
-
-      const cartFinal = encontrado
-        ? nuevoCart
-        : [...nuevoCart, {
-            ...item,
-            cantidad,
-            precio,
-            total: cantidad * precio
-          }]
-
-      const nuevoSubtotal = cartFinal.reduce(
-        (acc, item) => acc + Number(item.total),
-        0
-      )
-
-      const nuevoDescuento =
-        nuevoSubtotal * (state.cart_porcentaje_descuento * 0.01)
-
-      const nuevoIva = 0
-
-      const nuevoTotal =
-        nuevoSubtotal - nuevoDescuento + nuevoIva
-
-      return {
-        cart: cartFinal,
-        cart_subtotal: nuevoSubtotal,
-        cart_descuento: nuevoDescuento,
-        cart_iva: nuevoIva,
-        cart_total: nuevoTotal
-      }
-    })
+    }));
+    if(encontrado != true){
+      set((state) => ({
+        cart: [...state.cart, item],
+      }));
+    }
   },
 
-  // =========================
-  // ELIMINAR ITEM
-  // =========================
+  //borrar
   remove_cart_item: (index) => {
-    set((state) => {
+    
+    //subtotal
+    set((state) => ({
+      cart_subtotal: state.cart_subtotal - parseFloat(state.cart[index]['total'])
+     }));
+    
+    //descuento
+    set((state) => ({
+      cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
+   }));
 
-      const nuevoCart = state.cart.filter((_, i) => i !== index)
+   //iva por el momento no cobran iva
+   /*
+   set((state) => ({
+     cart_iva: ((parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento)) * .15)
+   }));
+   */
 
-      const nuevoSubtotal = nuevoCart.reduce(
-        (acc, item) => acc + Number(item.total),
-        0
-      )
-
-      const nuevoDescuento =
-        nuevoSubtotal * (state.cart_porcentaje_descuento * 0.01)
-
-      const nuevoIva = 0
-
-      const nuevoTotal =
-        nuevoSubtotal - nuevoDescuento + nuevoIva
-
-      return {
-        cart: nuevoCart,
-        cart_subtotal: nuevoSubtotal,
-        cart_descuento: nuevoDescuento,
-        cart_iva: nuevoIva,
-        cart_total: nuevoTotal
-      }
-    })
+   //total
+   set((state) => ({ 
+    cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
+   }));
+  
+   //cart
+    set((state) => ({
+      ...state,
+      cart: state.cart.filter((item,idx) => idx != index)
+    }));
+    
+  
   },
 
-  // =========================
-  // APLICAR DESCUENTO
-  // =========================
-  check_discount_code: (percentage) => {
-    set((state) => {
+  //aplicar codigo de descuento
+  check_discount_code: (percentage) =>{
 
-      const nuevoDescuento =
-        state.cart_subtotal * (percentage * 0.01)
+    //porcentaje
+    set((state) => ({
+      cart_porcentaje_descuento: percentage
+    }));  
 
-      const nuevoTotal =
-        state.cart_subtotal - nuevoDescuento + state.cart_iva
+    //descuento
+    set((state) => ({
+      cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
+    }));
 
-      return {
-        cart_porcentaje_descuento: percentage,
-        cart_descuento: nuevoDescuento,
-        cart_total: nuevoTotal
-      }
-    })
+    //iva por el momento no cobran iva
+    /*
+    set((state) => ({
+       cart_iva: ((parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento)) * .15)
+    }));
+    */
+
+    //total
+    set((state) => ({ 
+      cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
+    }));
+
+          
   },
 
-  // =========================
-  // LIMPIAR DESCUENTO
-  // =========================
+  //reset codigo de descuento
   clear_discount_code: () => {
-    set((state) => {
 
-      const nuevoDescuento = 0
+    //porcentaje
+    set((state) => ({
+      cart_porcentaje_descuento: 0
+    }));  
 
-      const nuevoTotal =
-        state.cart_subtotal - nuevoDescuento + state.cart_iva
+    //descuento
+    set((state) => ({
+      cart_descuento: parseFloat(state.cart_subtotal) * (parseFloat(state.cart_porcentaje_descuento) * .01)
+    }));
 
-      return {
-        cart_porcentaje_descuento: 0,
-        cart_descuento: nuevoDescuento,
-        cart_total: nuevoTotal
-      }
-    })
+    //iva por el momento no cobran iva
+    /*
+    set((state) => ({
+       cart_iva: ((parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento)) * .15)
+    }));
+    */
+
+    //total
+    set((state) => ({ 
+      cart_total: parseFloat(state.cart_subtotal) - parseFloat(state.cart_descuento) + parseFloat(state.cart_iva)
+    }));
   },
 
-  // =========================
-  // LIMPIAR CARRITO
-  // =========================
+  //resetear carrito
   clear_cart: () => {
-    set({
+    set((state) => ({ 
+
       cart: [],
-      cart_subtotal: 0,
-      cart_descuento: 0,
-      cart_iva: 0,
-      cart_total: 0,
-      cart_porcentaje_descuento: 0,
-    })
+      cart_subtotal:0,
+      cart_descuento:0,
+      cart_iva:0,
+      cart_total:0,
+      cart_porcentaje_descuento:0,
+
+    }));
+
   }
 
-}))
+
+  //increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  //removeAllBears: () => set({ bears: 0 }),
+  
+}),
+{
+  name: 'cart-storage', // name of the item in the storage (must be unique)
+  
+}
+))
+

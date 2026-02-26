@@ -1,6 +1,6 @@
 import { CartForm } from "./cart_form";
 
-const Cart = () => {
+const Cart = async () => {
 
        
   return (
@@ -26,9 +26,8 @@ const Cart = () => {
         </div>
       </section>
 
-{/*
       <CartForm/>
-*/}
+
 
 
     </main>
