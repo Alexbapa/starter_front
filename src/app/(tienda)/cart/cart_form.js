@@ -1,6 +1,5 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
+import { useStore } from 'zustand';
 
 import { useRouter } from "next/navigation";
 
@@ -28,12 +27,19 @@ export const CartForm = () => {
   }, []);
 
   const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
-  const hasHydrated = useCartStore.persist.hasHydrated();
+  const hasHydrated = useStore(useCartStore, (state) => state.persist?.hasHydrated?.() ?? false);
   
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
   const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
   const clearCart = useCartStore((state) => state.clear_cart)
+
+  // Debug logging
+  useEffect(() => {
+    console.log('Mounted:', mounted);
+    console.log('HasHydrated:', hasHydrated);
+    console.log('Cart:', cart);
+  }, [mounted, hasHydrated, cart]);
 
   if (!mounted || !hasHydrated) {
     return (
