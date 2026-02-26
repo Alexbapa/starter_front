@@ -5,7 +5,7 @@ export const useHydratedStore = (store, callback) => {
 
   useEffect(() => {
     // Solo ejecutar en el cliente
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && store && store.persist) {
       const unsub = store.persist.onHydrate(() => {
         setHydrated(false)
       })
@@ -23,6 +23,9 @@ export const useHydratedStore = (store, callback) => {
         unsub()
         unsubFinish()
       }
+    } else {
+      // Si no hay persistencia o no estamos en el cliente, marcar como hidratado
+      setHydrated(true)
     }
   }, [store])
 

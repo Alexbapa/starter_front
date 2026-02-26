@@ -45,7 +45,7 @@ export const CartForm = () => {
     );
   }
 
-  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = cartStore //debe de ir aqui arriba por ser un hook y evitar errores
+  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = cartStore;
 
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
