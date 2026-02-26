@@ -172,6 +172,5 @@ export const useCartStore = create(persist(
   {
     name: 'cart-storage', // name of item in storage (must be unique)
     storage: customStorage, // storage personalizado para TypeScript
-    skipHydration: true, // importante para SSR
   } as const
 ))

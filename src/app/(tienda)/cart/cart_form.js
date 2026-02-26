@@ -26,12 +26,9 @@ export const CartForm = () => {
 
   useEffect(() => {
     setMounted(true);
-    // Activar hidratación manual del store
-    useCartStore.persist.rehydrate();
   }, []);
 
   const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
-  const hasHydrated = useStore(useCartStore, (state) => state.persist?.hasHydrated?.() ?? false);
   
   const deleteCartItem = useCartStore((state) => state.remove_cart_item)
   const checkDiscountCode = useCartStore((state) => state.check_discount_code)
@@ -41,11 +38,10 @@ export const CartForm = () => {
   // Debug logging
   useEffect(() => {
     console.log('Mounted:', mounted);
-    console.log('HasHydrated:', hasHydrated);
     console.log('Cart:', cart);
-  }, [mounted, hasHydrated, cart]);
+  }, [mounted, cart]);
 
-  if (!mounted || !hasHydrated) {
+  if (!mounted) {
     return (
       <div className="text-center py-5">
         <div className="spinner-border text-primary" role="status">
