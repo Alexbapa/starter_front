@@ -27,12 +27,13 @@ export const CartForm = () => {
     setMounted(true);
   }, []);
 
-  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = useCartStore();
-  
-  const deleteCartItem = useCartStore((state) => state.remove_cart_item)
-  const checkDiscountCode = useCartStore((state) => state.check_discount_code)
-  const clearDiscountCode = useCartStore((state) => state.clear_discount_code)
-  const clearCart = useCartStore((state) => state.clear_cart)
+  // Obtener todas las funciones del store al principio
+  const store = useCartStore();
+  const { cart, cart_subtotal, cart_descuento, cart_iva, cart_total } = store;
+  const deleteCartItem = store.remove_cart_item;
+  const checkDiscountCode = store.check_discount_code;
+  const clearDiscountCode = store.clear_discount_code;
+  const clearCart = store.clear_cart;
 
   // Debug logging
   useEffect(() => {
