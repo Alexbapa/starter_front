@@ -393,7 +393,8 @@ export const CartForm = () => {
         codigo_postal: datos_entrega_codigo_postal
       })
 
-      setCostoEnvio(res.data.costo_envio)
+      console.log(res.data)
+      //setCostoEnvio(res.data.costo_envio)
 
       mostrarAviso("Costo de envío calculado")
 
