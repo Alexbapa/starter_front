@@ -41,9 +41,10 @@ export const CartForm = () => {
   const [formaEntrega, setFormaEntrega] = useState('Envío a Domicilio');
 
   const [costo_envio, setCostoEnvio] = useState(0);
-
+  const [fecha_estimada_entrega, setFechaEstimadaEntrega] = useState('');
   const [viewMPbutton, setViewMPbutton] = useState(false);
   const [viewContinuebutton, setViewContinuebutton] = useState(true);
+  const [codigo_descuento, setCodigoDescuento] = useState('');
 
   const allDeliveryTypes = [];
 
@@ -394,7 +395,12 @@ export const CartForm = () => {
       })
 
       console.log(res.data)
-      //setCostoEnvio(res.data.costo_envio)
+      setCostoEnvio(res.data.costo_envio)
+      
+      // Guardar fecha estimada si viene en la respuesta
+      if (res.data.fecha_estimada) {
+        setFechaEstimadaEntrega(res.data.fecha_estimada)
+      }
 
       mostrarAviso("Costo de envío calculado")
 
@@ -523,6 +529,11 @@ export const CartForm = () => {
                   <li style={{ fontWeight: "800" }}>
                     <span>Envío</span> <span>$ {costo_envio.toFixed(2)}</span>
                   </li>
+                  {fecha_estimada_entrega && (
+                    <li style={{ fontSize: "0.9rem", color: "#666" }}>
+                      <span>Entrega estimada:</span> <span>{fecha_estimada_entrega}</span>
+                    </li>
+                  )}
                   <li style={{ fontWeight: "800" }}>
                     <span>Total</span> <span>$ {(cart_total + costo_envio).toFixed(2)}</span>
                   </li>
