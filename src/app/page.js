@@ -20,7 +20,7 @@ export default function ComingSoon() {
   useEffect(() => {
     setIsMounted(true);
 
-    const targetDate = new Date("2026-02-27T23:59:00").getTime();
+    const targetDate = new Date("2026-03-06T23:59:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
