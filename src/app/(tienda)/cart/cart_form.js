@@ -33,6 +33,10 @@ export const CartForm = () => {
 
   const [datos_entrega_nombre, setDatosEntregaNombre] = useState('');
   const [datos_entrega_direccion, setDatosEntregaDireccion] = useState('');
+  const [datos_entrega_numero_exterior, setDatosEntregaNumeroExterior] = useState('');
+  const [datos_entrega_colonia, setDatosEntregaColonia] = useState('');
+  const [datos_entrega_municipio, setDatosEntregaMunicipio] = useState('');
+  const [datos_entrega_ciudad, setDatosEntregaCiudad] = useState('');
   const [datos_entrega_codigo_postal, setDatosEntregaCodigoPostal] = useState('');
   const [datos_entrega_correo, setDatosEntregaCorreo] = useState('');
   const [datos_entrega_telefono, setDatosEntregaTelefono] = useState('');
@@ -62,7 +66,15 @@ export const CartForm = () => {
     if (datos_entrega_nombre === "") {
       mostrarMensaje("Debes escribir el nombre en datos de entrega");
     } else if (datos_entrega_direccion === "") {
-      mostrarMensaje("Debes escribir la direccion en datos de entrega");
+      mostrarMensaje("Debes escribir la calle en datos de entrega");
+    } else if (datos_entrega_numero_exterior === "") {
+      mostrarMensaje("Debes escribir el número exterior en datos de entrega");
+    } else if (datos_entrega_colonia === "") {
+      mostrarMensaje("Debes escribir la colonia en datos de entrega");
+    } else if (datos_entrega_municipio === "") {
+      mostrarMensaje("Debes escribir el municipio en datos de entrega");
+    } else if (datos_entrega_ciudad === "") {
+      mostrarMensaje("Debes escribir la ciudad en datos de entrega");
     } else if (datos_entrega_codigo_postal === "") {
       mostrarMensaje("Debes escribir el código postal en datos de entrega");
     } else if (datos_entrega_correo === "") {
@@ -383,6 +395,31 @@ export const CartForm = () => {
 
   const calcularEnvio = async () => {
 
+    if (datos_entrega_direccion === "") {
+      mostrarMensaje("Debes escribir la calle")
+      return
+    }
+
+    if (datos_entrega_numero_exterior === "") {
+      mostrarMensaje("Debes escribir el número exterior")
+      return
+    }
+
+    if (datos_entrega_colonia === "") {
+      mostrarMensaje("Debes escribir la colonia")
+      return
+    }
+
+    if (datos_entrega_municipio === "") {
+      mostrarMensaje("Debes escribir el municipio")
+      return
+    }
+
+    if (datos_entrega_ciudad === "") {
+      mostrarMensaje("Debes escribir la ciudad")
+      return
+    }
+
     if (datos_entrega_codigo_postal === "") {
       mostrarMensaje("Debes escribir el código postal")
       return
@@ -391,7 +428,14 @@ export const CartForm = () => {
     try {
       let res = await clienteAxios.post("/pedido/shipping/calculate", {
         cart,
-        codigo_postal: datos_entrega_codigo_postal
+        codigo_postal: datos_entrega_codigo_postal,
+        street: datos_entrega_direccion,
+        ext_number: datos_entrega_numero_exterior,
+        suburb: datos_entrega_colonia,
+        municipality: datos_entrega_municipio,
+        town: datos_entrega_ciudad,
+        correo: datos_entrega_correo,
+        telefono: datos_entrega_telefono
       })
 
       console.log(res.data)
@@ -530,7 +574,7 @@ export const CartForm = () => {
                     <span>Envío</span> <span>$ {costo_envio.toFixed(2)}</span>
                   </li>
                   {fecha_estimada_entrega && (
-                    <li style={{ fontSize: "0.9rem", color: "#666" }}>
+                    <li style={{ fontWeight: "800" }}>
                       <span>Entrega estimada:</span> <span>{fecha_estimada_entrega}</span>
                     </li>
                   )}
@@ -571,12 +615,44 @@ export const CartForm = () => {
                           />
 
                           {/*Direccion de entrega*/}
-                          <textarea
+                          <input
                             onChange={(e) => setDatosEntregaDireccion(e.target.value)}
-                            placeholder="Dirección"
+                            placeholder="Calle"
                             id="datos_entrega_direccion"
                             type="text"
-                            style={{ width: "100%" }}
+                            style={{ width: "100%", marginBottom: "8px", marginTop: "8px" }}
+                          />
+
+                          <input
+                            onChange={(e) => setDatosEntregaNumeroExterior(e.target.value)}
+                            placeholder="Número Exterior"
+                            id="datos_entrega_numero_exterior"
+                            type="text"
+                            style={{ width: "100%", marginBottom: "8px", marginTop: "8px" }}
+                          />
+
+                          <input
+                            onChange={(e) => setDatosEntregaColonia(e.target.value)}
+                            placeholder="Colonia"
+                            id="datos_entrega_colonia"
+                            type="text"
+                            style={{ width: "100%", marginBottom: "8px", marginTop: "8px" }}
+                          />
+
+                          <input
+                            onChange={(e) => setDatosEntregaMunicipio(e.target.value)}
+                            placeholder="Municipio"
+                            id="datos_entrega_municipio"
+                            type="text"
+                            style={{ width: "100%", marginBottom: "8px", marginTop: "8px" }}
+                          />
+
+                          <input
+                            onChange={(e) => setDatosEntregaCiudad(e.target.value)}
+                            placeholder="Ciudad"
+                            id="datos_entrega_ciudad"
+                            type="text"
+                            style={{ width: "100%", marginBottom: "8px", marginTop: "8px" }}
                           />
 
                           <input
