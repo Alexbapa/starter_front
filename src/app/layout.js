@@ -111,7 +111,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className={dinFont.variable}>
         <Toaster richColors position="top-right"/>
         {children}
       </body>
