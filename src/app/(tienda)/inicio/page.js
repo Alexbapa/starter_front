@@ -8,6 +8,8 @@ import {ProductPreviewCard} from "../../../components/productPreviewCard";
 import {CategoryItemMain} from "../../../components/CategoryItemMain";
 import {CategoryItemSmall} from "../../../components/CategoryItemSmall";
 
+
+
 const getCategories = async () => {
   try {
     const res = await clienteAxios.get(`/categoria/obtener`);
@@ -70,19 +72,19 @@ const Page = async () => {
                       {/*
                   <h3 className="small_title" data-animation="fadeInUp2" data-delay=".2s">Para cualquier industria</h3>
                   */}
-                      <h1
-                        className="big_title text-pink fadeInCustom"
-                        style={{lineHeight:".90"}}
-                      >
-                        <span style={{ paddingBottom: "12px", display: "inline-block" }}>DOMINA</span>
-                        <br></br>
-                        <span className="text-brown" style={{ fontSize: "0.8em", display: "block" }}>las calles con tu outfit</span>
-                      </h1>
-                      {/*
-                  <p className="text-brown" data-animation="fadeInUp2" data-delay=".6s">
-                    Para cualquier industria y en cualquier cantidad.
-                  </p>
-                  */}
+                     <h1
+  className="hero_title fadeInCustom"
+>
+  BLACK LABEL
+  <br />
+  <span className="hero_sub">
+    SPRING 26
+  </span>
+</h1>
+
+<p className="hero_tagline">
+  LOOK FOR THE STAR
+</p>
 
 
                     <BtnCategoria categories={categories}/>
@@ -136,7 +138,7 @@ const Page = async () => {
                       >  
                         <span
   style={{
-   paddingBottom: "15px", display: "inline-block"
+   paddingBottom: "20px", display: "inline-block"
   }}
 >REGRESAMOS</span>{" "}
                         <br></br>

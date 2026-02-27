@@ -1,4 +1,3 @@
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import ImportJSFiles from "../importJsFiles"; // Solo sube 1 nivel a app/
 
@@ -17,6 +16,8 @@ import { Toaster, toast } from 'sonner';
 import { Navbar } from "../../components/Navbar"; // Sube 2 niveles a src/components/
 import { Footer } from "../../components/Footer";
 import { BackToTopButton } from "../../components/BackToTopButton";
+
+
 
 const getSeo = async () => {
   try {
@@ -50,7 +51,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
    
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body>
         <ImportJSFiles />
         <BackToTopButton />
