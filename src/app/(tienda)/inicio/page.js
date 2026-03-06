@@ -359,7 +359,7 @@ const Page = async () => {
     <p className="launch_subtitle">
       Descubre lo nuevo de Starter
     </p>
-    <Link href="/shop" className="btn btn_primary btn_rounded">
+    <Link href="/categories/Todas/Playeras" className="btn btn_primary btn_rounded">
       VER COLECCIÓN
     </Link>
   </div>

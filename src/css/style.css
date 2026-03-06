@@ -20,18 +20,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 */
 @font-face {
+  font-family: "Aligatai";
+  src: local("Aligatai"), 
+       url("../fonts/DIN-Medium.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
- font-family: var(--font-din), sans-serif !important;
-  src: local("Aligatai"), url("../fonts/Aligatai.woff") format("woff");
 }
+
+/* 2. Usamos DIN-Black para Margarita (Títulos de impacto/Grandes) */
 @font-face {
   font-family: "Margarita";
-  src: local("Margarita"), url("../fonts/marguerite.ttf");
+  src: local("Margarita"), 
+       url("../fonts/DIN-Black.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
 }
+
+/* 3. Usamos DIN-BlackItalic para Plantagenet (Detalles o secundarios) */
 @font-face {
   font-family: "Plantagenet";
-  src: local("Plantagenet"), url("../fonts/plantagenet-cherokee.ttf");
+  src: local("Plantagenet"), 
+       url("../fonts/DIN-BlackItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* --- FORZADO GLOBAL PARA NO FALLAR --- */
+
+:root {
+  --font-din: "Aligatai", sans-serif;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
@@ -52,6 +69,7 @@ body {
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-family: "Aligatai", sans-serif !important; /* Ahora es DIN-Medium */
 }
 
 .body_wrap {
@@ -142,6 +160,19 @@ button:focus {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #252525;
+}
+
+/* Forzamos que los títulos usen la DIN-Black (antes Margarita) */
+h1, h2, h3, h4, .shop_title, .item_title {
+  font-family: "Margarita", sans-serif !important; /* Ahora es DIN-Black */
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
+}
+
+/* Los precios se verán limpios con la Medium */
+.sale_price, .item_price {
+  font-family: "Aligatai", sans-serif !important;
+  font-weight: 500;
 }
 
 
@@ -19436,10 +19467,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .fadeInUp{
-  animation:fadeInUp .5s ease backwards;
-  -moz-animation: fadeInUp 1s; /* Firefox */
-  -webkit-animation: fadeInUp 1s; /* Safari and Chrome */
-  -o-animation: fadeInUp 1s; /* Opera */
+  animation:fadeInUp .3s ease backwards;
+  -moz-animation: fadeInUp .3s; /* Firefox */
+  -webkit-animation: fadeInUp .3s; /* Safari and Chrome */
+  -o-animation: fadeInUp .3s; /* Opera */
 }
 @keyframes fadeInUp{
   0%{transform:translate(0px, 100px); opacity: 0;}

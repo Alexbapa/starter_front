@@ -1,22 +1,16 @@
 "use client";
 
 import { useState } from "react";
-
 import Link from "next/link";
-
 import clienteAxios from "../config/axios";
-
 import Modal from "react-modal";
-
 import Select from "react-select";
-
 import { useCartStore } from "../store/cart";
-
-import { FacebookShareButton, FacebookIcon } from "react-share";
-
+import { FacebookShareButton } from "react-share";
 import { toast } from "sonner";
 
-export const ProductPreviewCard = ({ item }) => {
+// Agregamos { item, darkMode = true } para que sea dinámico
+export const ProductPreviewCard = ({ item, darkMode = true }) => {
   
   const addCartItem = useCartStore((state) => state.add_cart_item);
   const { cart } = useCartStore();
@@ -42,29 +36,20 @@ export const ProductPreviewCard = ({ item }) => {
     setColor({ value: codigo, label: label });
   };
 
-  
   const getStock = async (size, colour) => {
     try {
-     
       const res2 = await clienteAxios.get(
         `/almacen/stock-codigo/` + item.codigo + `-` + size + `-` + colour
       );
-
-      //console.log(res2.data.stock);
-
       if(res2.data.stock.length == 0){
         return 0;
       }else{
         return res2.data.stock[0].stockTotal;
       }
-
-
     } catch (error) {
       console.log(error);
     }
-
   };
- 
 
   const mostrarMensaje = (mensaje) => {
     toast.error(mensaje);
@@ -76,10 +61,8 @@ export const ProductPreviewCard = ({ item }) => {
 
   const addToCart = async (event) => {
     event.preventDefault();
-
     let onCart = 0;
 
-    //validamos campos
     if (color === "" || color === undefined) {
       mostrarMensaje("Debes seleccionar un color");
     } else if (talla === "" || talla === undefined) {
@@ -87,17 +70,10 @@ export const ProductPreviewCard = ({ item }) => {
     } else if (cantidad === "" || cantidad === undefined) {
       mostrarMensaje("Debes escribir una cantidad");
     } else {
-      
       const stockTotal = await getStock(talla.value, color.value);
-
-      //buscamos si ya tiene el mismo producto en el carrito
       for (let i = 0; i < cart.length; i++) {
-        if (
-          cart[i]["codigo"] ==
-          item.codigo + "-" + talla.value + "-" + color.value
-        ) {
+        if (cart[i]["codigo"] == item.codigo + "-" + talla.value + "-" + color.value) {
           onCart = onCart + parseInt(cart[i]["cantidad"]);
-          //console.log(onCart);
         }
       }
 
@@ -164,12 +140,8 @@ export const ProductPreviewCard = ({ item }) => {
 
   const modalCustomStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
+      top: "50%", left: "50%", right: "auto", bottom: "auto",
+      marginRight: "-50%", transform: "translate(-50%, -50%)",
       animation: "fadeIn 1s",
     },
     overlay: {zIndex: 1000}
@@ -193,18 +165,10 @@ export const ProductPreviewCard = ({ item }) => {
       ...base,
       color: "rgb(15 23 42 / var(--tw-text-opacity))",
     }),
-    multiValueRemove: (base, state) => ({
-      ...base,
-      color: "red",
-    }),
     option: (base, state) => {
       return {
         ...base,
-        background: state.isSelected
-          ? "#0033A0"
-          : state.isFocused
-          ? "#0033A050"
-          : "transparent",
+        background: state.isSelected ? "#0033A0" : state.isFocused ? "#0033A050" : "transparent",
         color: state.isSelected ? "white" : "grey",
       };
     },
@@ -215,186 +179,70 @@ export const ProductPreviewCard = ({ item }) => {
       <div className="shop_layout_1">
         <div className="shop_image_wrap">
           <div className="tab-content">
-            {/*foto 1*/}
-            <div
-              className="tab-pane fade show active"
-              id={item.codigo}
-              role="tabpanel"
-            >
+            <div className="tab-pane fade show active" id={item.codigo} role="tabpanel">
               <Link
                 className="shop_image"
-                href={`/shop_details/${item.categoria
-                  .trim()
-                  .replace(/\s/g, "-")}/${item.nombre
-                  .trim()
-                  .replace(/\s/g, "-")}/${item.codigo}`}
+                href={`/shop_details/${item.categoria.trim().replace(/\s/g, "-")}/${item.nombre.trim().replace(/\s/g, "-")}/${item.codigo}`}
               >
                 <img
-                  src={`${item.foto_principal}?v=${item.foto_principal.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
-                  alt={`${item.foto_principal}`}
+                  src={`${item.foto_principal}`}
+                  alt={`${item.nombre}`}
                   className="img-fluid"
                 />
               </Link>
             </div>
-
-
-            {/*fotos carrusel     
-            {item.fotos_carrusel.map((item2, index) => {
-              return index < 4 ? 
-            (
-              <div
-                key={index}
-                className="tab-pane fade"
-                id={item.codigo + index}
-                role="tabpanel"
-              >
-                <Link
-                  className="shop_image"
-                  href={`/shop_details/${item.categoria
-                    .trim()
-                    .replace(/\s/g, "-")}/${item.nombre
-                    .trim()
-                    .replace(/\s/g, "-")}/${item.codigo}`}
-                >
-                  <img
-                    src={`${item2.image}?v=${item2.image.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
-                    alt={`${item2.image}`}
-                    className="img-fluid"
-                  />
-                </Link>
-              </div>
-            ):(<></>)
-            })}
-            */}   
-
           </div>
 
-          {/*hover links*/}
           <ul className="action_btns_group ul_li_block">
             <li>
-              <a
-                onClick={() => openQuickViewModal()}
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Vista rápida"
-              >
+              <a onClick={() => openQuickViewModal()} style={{cursor: 'pointer'}}>
                 <i className="fal fa-eye"></i>
               </a>
             </li>
           </ul>
         </div>
 
-        {/*tabs buttons
-        <ul className="nav child_image" role="tablist">
-          <li role="presentation">
-            <button
-              className="active"
-              data-bs-toggle="tab"
-              data-bs-target={"#" + item.codigo}
-              type="button"
-              role="tab"
-              aria-selected="true"
-            >
-              <img
-                src={`${item.foto_principal}?v=${item.foto_principal.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
-                alt={`${item.foto_principal}`}
-                className="img-fluid"
-              />
-            </button>
-          </li>
-          {item.fotos_carrusel.map((item2, index) => {
-            return index < 4 ? 
-          (
-            <li key={index} role="presentation">
-              <button
-                data-bs-toggle="tab"
-                data-bs-target={"#" + item.codigo + index}
-                type="button"
-                role="tab"
-                aria-selected="false"
-              >
-                <img
-                  src={`${item2.image}?v=${item2.image.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
-                  alt={`${item2.image}`}
-                  className="img-fluid"
-                />
-              </button>
-            </li>
-          ):(<></>)
-          })}
-          
-        </ul>
-        */}
-
-        {/*info producto*/}
+        {/* INFO PRODUCTO - AQUI ESTÁ EL CAMBIO DINÁMICO */}
         <div className="shop_content">
-          <h3 className="shop_title" style={{ color: "#fff" }}>
-            <Link style={{ color: "#fff" }}
-              href={`/shop_details/${item.categoria
-                .trim()
-                .replace(/\s/g, "-")}/${item.nombre
-                .trim()
-                .replace(/\s/g, "-")}/${item.codigo}`}
+          <h3 className="shop_title" style={{ color: darkMode ? "#fff" : "#000" }}>
+            <Link 
+              style={{ color: darkMode ? "#fff" : "#000" }}
+              href={`/shop_details/${item.categoria.trim().replace(/\s/g, "-")}/${item.nombre.trim().replace(/\s/g, "-")}/${item.codigo}`}
             >
               {item.nombre}
             </Link>
           </h3>
           <div className="shop_price">
-            <span className="sale_price" style={{ color: "#fff" }}>$ {item.precio}</span>
+            <span className="sale_price" style={{ color: darkMode ? "#fff" : "#000" }}>
+              $ {item.precio}
+            </span>
           </div>
         </div>
       </div>
-      <Modal
-        isOpen={showContinueModal}
-        style={modalCustomStyles}
-        ariaHideApp={false}
-      >
-        <ul
-          style={{
-            listStyle: "none",
-            display: "flex",
-            padding: "0px",
-            margin: "0px",
-          }}
-        >
+
+      {/* MODALES - No cambian nada de lógica */}
+      <Modal isOpen={showContinueModal} style={modalCustomStyles} ariaHideApp={false}>
+        <ul style={{ listStyle: "none", display: "flex", padding: "0px", margin: "0px" }}>
           <li>
-            <button
-              className="btn btn_primary btn_rounded text-uppercase"
-              style={{ padding: "15px", margin: "10px" }}
-              onClick={closeModal}
-            >
+            <button className="btn btn_primary btn_rounded text-uppercase" style={{ padding: "15px", margin: "10px" }} onClick={closeModal}>
               Continuar comprando
             </button>
           </li>
           <li>
             <Link href="/cart">
-              <button
-                className="btn btn_secondary btn_rounded text-uppercase"
-                style={{ padding: "15px", margin: "10px" }}
-              >
+              <button className="btn btn_secondary btn_rounded text-uppercase" style={{ padding: "15px", margin: "10px" }}>
                 Ir al carrito
               </button>
             </Link>
           </li>
         </ul>
       </Modal>
-      <Modal
-        isOpen={showQuickViewModal}
-        style={modalCustomStyles}
-        ariaHideApp={false}
-      >
+
+      <Modal isOpen={showQuickViewModal} style={modalCustomStyles} ariaHideApp={false}>
         <div className="modal-dialog modal-dialog-centered">
-          <div
-            className="modal-content"
-            style={{ maxHeight: "70vh", zIndex: "999999" }}
-          >
+          <div className="modal-content" style={{ maxHeight: "70vh", zIndex: "999999" }}>
             <div className="modal-header">
-              <button
-                type="button"
-                className="btn-close"
-                style={{ marginBottom: "15px" }}
-                onClick={() => closeQuickViewModal()}
-              ></button>
+              <button type="button" className="btn-close" style={{ marginBottom: "15px" }} onClick={() => closeQuickViewModal()}></button>
             </div>
             <div className="modal-body">
               <div className="shop_details bg_gray sec_space_small">
@@ -402,115 +250,45 @@ export const ProductPreviewCard = ({ item }) => {
                   <div className="row align-items-center justify-content-center">
                     <div className="col col-lg-6 col-md-8">
                       <div className="sd_image_carousel p-0">
-                        <img
-                          src={`${item.foto_principal}?v=${item.foto_principal.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)}`}
-                          alt={`${item.foto_principal}`}
-                          className="img-fluid"
-                        />
+                        <img src={`${item.foto_principal}`} alt={item.nombre} className="img-fluid" />
                       </div>
                     </div>
-
                     <div className="col col-lg-6 col-md-8">
                       <div className="shop_details_content">
                         <h2 className="item_subtitle">{item.categoria}</h2>
-                        <h3
-                          className="item_title"
-                          style={{ fontFamily: "Plantagenet" }}
-                        >
-                          {item.nombre}
-                        </h3>
+                        <h3 className="item_title" style={{ fontFamily: "Plantagenet" }}>{item.nombre}</h3>
                         <h4>{item.marca}</h4>
-                        <div className="item_price">
-                          <span className="sale_price">$ {item.precio}</span>
-                        </div>
+                        <div className="item_price"><span className="sale_price">$ {item.precio}</span></div>
                         <p className="mb-0">{item.descripcion}</p>
                         <hr />
                         <div className="sd_info_layout">
                           <h4 className="title_text">Color:</h4>
-
                           <ul className="sd_color_list ul_li">
-                            {item.color.map((item, index) => (
+                            {item.color.map((colorItem, index) => (
                               <li key={index}>
-                                <input
-                                  style={{ backgroundColor: item.colorhexa }}
-                                  onChange={() =>
-                                    handleColorChange(item.value, item.label)
-                                  }
-                                  type="radio"
-                                  name="sd_item_color"
-                                />
+                                <input style={{ backgroundColor: colorItem.colorhexa }} onChange={() => handleColorChange(colorItem.value, colorItem.label)} type="radio" name="sd_item_color" />
                               </li>
                             ))}
                           </ul>
                         </div>
-
                         <div className="sd_info_layout">
                           <h4 className="title_text">Talla:</h4>
                           <div className="sd_item_size_input">
-                            <Select
-                              styles={customStyles}
-                              placeholder="Seleccione"
-                              options={allSizes}
-                              value={talla}
-                              onChange={setTalla}
-                              isSearchable={true}
-                            ></Select>
+                            <Select styles={customStyles} placeholder="Seleccione" options={allSizes} value={talla} onChange={setTalla} isSearchable={true} />
                           </div>
                         </div>
-
                         <ul className="sd_btns_group ul_li">
                           <li>
                             <div className="quantity_form">
-                              <button
-                                type="button"
-                                className="input_number_decrement"
-                                onClick={() =>
-                                  setCantidad(cantidad > 1 ? cantidad - 1 : 1)
-                                }
-                              >
-                                <i className="fal fa-minus"></i>
-                              </button>
-                              <input
-                                className="input_number"
-                                type="number"
-                                onChange={(e) => setCantidad(e.target.value)}
-                                value={cantidad}
-                                min="1"
-                              />
-                              <button
-                                type="button"
-                                className="input_number_increment"
-                                onClick={() => setCantidad(cantidad + 1)}
-                              >
-                                <i className="fal fa-plus"></i>
-                              </button>
+                              <button type="button" className="input_number_decrement" onClick={() => setCantidad(cantidad > 1 ? cantidad - 1 : 1)}><i className="fal fa-minus"></i></button>
+                              <input className="input_number" type="number" onChange={(e) => setCantidad(e.target.value)} value={cantidad} min="1" />
+                              <button type="button" className="input_number_increment" onClick={() => setCantidad(cantidad + 1)}><i className="fal fa-plus"></i></button>
                             </div>
                           </li>
                           <li>
-                            <button
-                              className="btn btn_primary btn_rounded text-uppercase"
-                              onClick={(e) => addToCart(e)}
-                            >
-                              Agregar al carrito
-                            </button>
+                            <button className="btn btn_primary btn_rounded text-uppercase" onClick={(e) => addToCart(e)}>Agregar al carrito</button>
                           </li>
                         </ul>
-
-                        <hr />
-                        <div className="row align-items-center justify-content-between">
-                          <div className="col col-lg-7 col-md-6">
-                            <div className="sd_info_layout mb-0">
-                              <h4 className="title_text">Compartir:</h4>
-                              <ul className="social_primary ul_li">
-                                <li>
-                                  <FacebookShareButton url={currentPageUrl}>
-                                    <i className="fab fa-facebook-f"></i>
-                                  </FacebookShareButton>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>

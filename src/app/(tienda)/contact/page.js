@@ -41,7 +41,7 @@ const Contact = async () => {
                     <div className="info_list">
                       <h4>Contáctanos</h4>
                       <ul className="ul_li_block">
-                        <li>contacto@starter.com.x</li>
+                        <li>contacto@starter-mx.com  </li>
                       </ul>
                     </div>
                     <div className="social_wrap">

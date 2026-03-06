@@ -177,7 +177,7 @@ const AllCategories = async ({ params }) => {
                             .map((item) => (
                               <div key={item._id} className="col">
                               
-                                <ProductPreviewCard item={item}/>
+                               <ProductPreviewCard item={item} darkMode={false} />
                           
                               </div>
                             ))}
@@ -207,7 +207,7 @@ const AllCategories = async ({ params }) => {
                             )
                             .map((item) => (
                               <div key={item._id} className="col">
-                                <ProductPreviewCard item={item}/>
+                               <ProductPreviewCard item={item} darkMode={false} />
                               </div>
                             ))}
                         {/*fin producto*/}

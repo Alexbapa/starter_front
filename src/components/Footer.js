@@ -92,11 +92,21 @@ export async function Footer() {
                     <li>
                       <a
                         className="bg_facebook"
-                        href="https://www.facebook.com/fashionistaa.boutique"
+                        href="https://www.facebook.com/StarterMex"
                         target="_blank"
                         rel="noreferrer"
                       >
                         <i className="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                     <li>
+                      <a
+                        className="bg_facebook"
+                        href="https://www.instagram.com/startermexico/?hl=es"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="fab fa-instagram"></i>
                       </a>
                     </li>
                     {/*
@@ -112,13 +122,30 @@ export async function Footer() {
                 <div className="row">
                   <div className="footer_widget">
                     <h3 className="footer_widget_title text-white">
-                      Contáctanos
+                      Contáctanos:&nbsp;
                     </h3>
                     <ul className="footer_contact_info ul_li_block">
                       <li>
                         <p>
-                          <a href="mailto:ecommerce@starter.com.mx">
-                            ecommerce@starter.com.mx
+                          ATENCION A CLIENTES:&nbsp;
+                          <a href="mailto:contacto@starter-mx.com ">
+                            contacto@starter-mx.com 
+                          </a>
+                        </p>
+                      </li>
+                       <li>
+                        <p>
+                          ENVIOS:&nbsp;
+                          <a href="mailto:shipments@starter-mx.com">
+                            shipments@starter-mx.com  
+                          </a>
+                        </p>
+                      </li>
+                       <li>
+                        <p>
+                          FACTURACION:&nbsp;
+                          <a href="mailto:facturacion@starter-mx.com">
+                             facturacion@starter-mx.com
                           </a>
                         </p>
                       </li>
