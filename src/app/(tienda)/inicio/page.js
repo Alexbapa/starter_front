@@ -7,6 +7,7 @@ import { ProductPreviewCard } from "../../../components/productPreviewCard";
 import { CategoryItemMain } from "../../../components/CategoryItemMain";
 import { CategoryItemSmall } from "../../../components/CategoryItemSmall";
 import { MainSlider } from "../../../components/MainSlider";
+import logo from "../../../images/logo/Logo_redondo_alta.png";
 
 
 const getCategories = async () => {
@@ -351,16 +352,29 @@ const Page = async () => {
 */}
 
 <section className="launch_section">
-  <div className="container text-center">
+  <div className="launch_overlay">
+    
+    <img 
+      src={logo.src} 
+      alt="Starter"
+      className="launch_logo"
+    />
+
     <h2 className="launch_title">
       NUEVA COLECCIÓN
     </h2>
+
     <p className="launch_subtitle">
       Descubre lo nuevo de Starter
     </p>
-    <Link href="/categories/Todas/Playeras" className="btn btn_primary btn_rounded">
+
+    <Link 
+      href="/categories/Todas/Playeras"
+      className="launch_btn"
+    >
       VER COLECCIÓN
     </Link>
+
   </div>
 </section>
 
