@@ -47,6 +47,9 @@ export async function Navbar() {
           <div className=" header_top">
             <p className="welcome_text">Envios Gratis desde 2500 de compra</p>
             <ul className="header_icons_list ul_li">
+                <li>
+                <a href="https://www.instagram.com/startermexico/?hl=es" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
+              </li>
               <li>
                 <ul className="social_primary ul_li">
                   <li><a href="https://www.facebook.com/StarterMex" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f"></i></a></li>
