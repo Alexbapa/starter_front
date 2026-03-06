@@ -45,7 +45,7 @@ export async function Navbar() {
     <header className="header_section header_1">
         <div className="container width_desktop">
           <div className=" header_top">
-            <p className="welcome_text">{slogan}</p>
+            <p className="welcome_text">Envios Gratis desde 2500 de compra</p>
             <ul className="header_icons_list ul_li">
               <li>
                 <ul className="social_primary ul_li">
