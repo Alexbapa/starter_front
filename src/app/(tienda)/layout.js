@@ -8,6 +8,8 @@ import "../../css/magnific-popup.css";
 import "../../css/nice-select.css";
 import "../../css/style.css";
 import "../../css/image-gallery.css";
+import "../../css/slick.css";
+import "../../css/slick-theme.css";
 
 import clienteAxios from "../../config/axios"; // Sube 2 niveles a src/config/
 

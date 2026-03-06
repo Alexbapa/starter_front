@@ -1,13 +1,12 @@
 import clienteAxios from "../../../config/axios";
 import React from "react";
+import Link from "next/link";
 
-import Link from 'next/link'; 
-
-import {BtnCategoria} from "../../../components/btnCategoria";
-import {ProductPreviewCard} from "../../../components/productPreviewCard";
-import {CategoryItemMain} from "../../../components/CategoryItemMain";
-import {CategoryItemSmall} from "../../../components/CategoryItemSmall";
-
+import { BtnCategoria } from "../../../components/btnCategoria";
+import { ProductPreviewCard } from "../../../components/productPreviewCard";
+import { CategoryItemMain } from "../../../components/CategoryItemMain";
+import { CategoryItemSmall } from "../../../components/CategoryItemSmall";
+import { MainSlider } from "../../../components/MainSlider";
 
 
 const getCategories = async () => {
@@ -53,7 +52,7 @@ const Page = async () => {
         <SideMenu></SideMenu>
         */}
 
-        <section className="slider_section main_slider_1">
+         <section className="slider_section main_slider_1">
           <div
             className="main_slider"
            data-slick='{

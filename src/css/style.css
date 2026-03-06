@@ -4567,6 +4567,9 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
   background-position: center center;
   margin-top: 100px;
+   min-height:700px;
+  display:flex;
+  align-items:center;
 }
 
 .slider_content .btn,
@@ -4586,6 +4589,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .slider_item {
   position: relative;
+  min-height:700px;
+  display:flex;
+  align-items:center;
 }
 
 .slider_item::before {
@@ -5257,6 +5263,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 .category_item_1:hover .item_title {
   color: #6d6c6c;
+}
+
+.slick-prev,
+.slick-next{
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+
+.slick-prev:before,
+.slick-next:before{
+  font-size: 40px;
+  color: white;
+}
+
+.slider_item{
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.slider_item{
+  height:100vh;
+  display:flex;
+  align-items:center;
 }
 
 /* category item 1 (home 1) - end */
