@@ -1215,7 +1215,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #35465d;
 }
 .social_round a.bg_facebook {
-  background-color: #3b5998;
+  background-color: #6d6c6c;
 }
 .social_round a.bg_twitter {
   background-color: #1da1f2;
@@ -3006,7 +3006,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 27px;
 }
 .footer_contact_info a {
-  color: #0033A0;
+  color: #fff;
 }
 .footer_contact_info a:hover {
   text-decoration: underline;
@@ -5256,7 +5256,7 @@ h1, h2, h3, h4, h5, h6 {
           transform: scale(1.08);
 }
 .category_item_1:hover .item_title {
-  color: #0033A0;
+  color: #6d6c6c;
 }
 
 /* category item 1 (home 1) - end */
