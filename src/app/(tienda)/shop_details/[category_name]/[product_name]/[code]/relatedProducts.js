@@ -19,7 +19,7 @@ export const RelatedProducts = ({ productosRelacionados, codigo }) => {
                   element.fotos_carrusel.length > 0
               )
               .map((item, index) => (
-                <div key={index} className="col col-lg-3 col-md-4 col-sm-6">
+                <div key={index} className="col-6 col-lg-3 col-md-4 col-sm-6">
                   <ProductPreviewCard item={item}/>
                 </div>
               ))}
