@@ -5,49 +5,77 @@ import { BtnCategoria } from "./btnCategoria";
 
 export const MainSlider = ({ categories }) => {
 
-const settings = {
-  arrows: true,
-  dots: true,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  infinite: true
-};
+  const settings = {
+    arrows: false,
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    infinite: true
+  };
 
-return (
-<section className="slider_section main_slider_1">
+  return (
+    <section className="slider_section main_slider_1">
 
-<Slider {...settings}>
+      <Slider {...settings}>
 
-<div className="slider_item">
-  <div className="container width_desktop">
-    <div className="row justify-content-end align-items-center">
-      <div className="col-8 col-lg-5 col-md-6 col-sm-8">
+        <div className="slider_item d-flex">
+          <div className="container width_desktop">
+            <div className="row justify-content-end">
+              <div className="col-8 col-lg-5 col-md-6 col-sm-8">
 
-        <div className="slider_content text-white text-center">
+                <div className="slider_content text-white text-center">
 
-          <h1 className="hero_title fadeInCustom">
-            BLACK LABEL
-            <br />
-            <span className="hero_sub">
-              SPRING 26
-            </span>
-          </h1>
+                  <h1 className="hero_title fadeInCustom">
+                    BLACK LABEL
+                    <br />
+                    <span className="hero_sub">
+                      SPRING 26
+                    </span>
+                  </h1>
 
-          <p className="hero_tagline">
-            LOOK FOR THE STAR
-          </p>
+                  <p className="hero_tagline">
+                    LOOK FOR THE STAR
+                  </p>
 
-          <BtnCategoria categories={categories} />
+                  <BtnCategoria categories={categories} />
 
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-</div>
+         <div className="slider_item d-flex">
+          <div className="container width_desktop">
+            <div className="row justify-content-end">
+              <div className="col-8 col-lg-5 col-md-6 col-sm-8">
 
-</Slider>
+                <div className="slider_content text-white text-center">
 
-</section>
-);
+                  <h1 className="hero_title fadeInCustom">
+                    BLACK LABEL
+                    <br />
+                    <span className="hero_sub">
+                      SPRING 26
+                    </span>
+                  </h1>
+
+                  <p className="hero_tagline">
+                    LOOK FOR THE STAR
+                  </p>
+
+                  <BtnCategoria categories={categories} />
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </Slider>
+
+    </section>
+  );
 };

@@ -53,52 +53,7 @@ const Page = async () => {
         <SideMenu></SideMenu>
         */}
 
-         <section className="slider_section main_slider_1">
-          <div
-            className="main_slider"
-           data-slick='{
-    "arrows": true, 
-    "dots": true, 
-    "autoplay": true, 
-    "autoplaySpeed": 5000,
-    "infinite": true
-  }'
-          >
-            <div className="slider_item">
-              <div className="container width_desktop">
-                <div className="row justify-content-end">
-                  <div className="col-8 col-lg-5 col-md-6 col-sm-8">
-                    <div className="slider_content text-white text-center">
-                      {/*
-                  <h3 className="small_title" data-animation="fadeInUp2" data-delay=".2s">Para cualquier industria</h3>
-                  */}
-                     <h1
-  className="hero_title fadeInCustom"
->
-  BLACK LABEL
-  <br />
-  <span className="hero_sub">
-    SPRING 26
-  </span>
-</h1>
-
-<p className="hero_tagline">
-  LOOK FOR THE STAR
-</p>
-
-
-                    <BtnCategoria categories={categories}/>
-                 
-
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    <MainSlider categories={categories}/>
 
         <div className="category_section sec_space_large" style={{background:"#080808",}} >
           <div className="container width_desktop">

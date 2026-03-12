@@ -1,51 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import bgStarter from "../images/banner/proximamente.png";
 import logoStarter from "../images/logo/Logo_redondo_alta.png";
 
 export default function ComingSoon() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-
-    const targetDate = new Date("2026-03-06T23:59:00").getTime();
-
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        clearInterval(interval);
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        ),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000),
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!isMounted) return null;
-
   return (
     <main style={styles.container}>
       {/* Background con zoom cinematic */}
@@ -140,30 +102,7 @@ export default function ComingSoon() {
           style={styles.divider}
         />
 
-        {/* Timer */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          style={styles.timerContainer}
-        >
-          {renderBlock(timeLeft.days, "DÍAS")}
-          <span style={styles.colon}>:</span>
-          {renderBlock(
-            timeLeft.hours.toString().padStart(2, "0"),
-            "HRS"
-          )}
-          <span style={styles.colon}>:</span>
-          {renderBlock(
-            timeLeft.minutes.toString().padStart(2, "0"),
-            "MIN"
-          )}
-          <span style={styles.colon}>:</span>
-          {renderBlock(
-            timeLeft.seconds.toString().padStart(2, "0"),
-            "SEG"
-          )}
-        </motion.div>
+        {/* Timer removed */}
 
         <motion.p
           initial={{ opacity: 0 }}
@@ -178,25 +117,7 @@ export default function ComingSoon() {
   );
 }
 
-function renderBlock(value, label) {
-  return (
-    <div style={styles.timeBlock}>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={value}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -20, opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          style={styles.timeNumber}
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
-      <span style={styles.timeLabel}>{label}</span>
-    </div>
-  );
-}
+// Timer removed
 
 const styles = {
   container: {

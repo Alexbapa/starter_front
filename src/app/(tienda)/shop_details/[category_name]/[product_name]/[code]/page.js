@@ -9,30 +9,32 @@ import { RelatedProducts } from "./relatedProducts";
 
 
 
-export const generateMetadata = ({params}) =>{
+export const generateMetadata = async ({ params }) => {
+  const p = await params;
 
-
-
-return  {
+  return {
     openGraph: {
-        title: params.product_name,
-        description: params.category_name,
-        url: `https://starter.com.mx/shop_details/${params.category_name}/${params.product_name}/${params.code}`,
-        siteName: 'Starter',
-        images: [
-          {
-            url: `http://agencianuba.com/starter_front_images/productos/${params.code}.jpg`, 
-            width: 400,
-            height: 600,
-          },
-        ],
-        locale: 'es_MX',
-        type: 'website',
-      },
-    }
+      title: p.product_name,
+      description: p.category_name,
+      url: `https://starter.com.mx/shop_details/${p.category_name}/${p.product_name}/${p.code}`,
+      siteName: 'Starter',
+      images: [
+        {
+          url: `http://agencianuba.com/starter_front_images/productos/${p.code}.jpg`,
+          width: 400,
+          height: 600,
+        },
+      ],
+      locale: 'es_MX',
+      type: 'website',
+    },
   };
+};
 
-const Shop_details = async ({params}) => {
+
+const Shop_details = async ({ params }) => {
+
+  const p = await params;
 
   let foto_principal;
   let nombre_original;
@@ -48,7 +50,7 @@ const Shop_details = async ({params}) => {
 
   const getProduct = async () => {
     try {
-      const res = await clienteAxios.get(`/producto/single-codigo/` + params.code);
+      const res = await clienteAxios.get(`/producto/single-codigo/` + p.code);
       //console.log(res.data.single[0]);
 
       foto_principal = res.data.single[0].foto_principal
@@ -100,11 +102,11 @@ const Shop_details = async ({params}) => {
                       Inicio
                     </Link>
                   </li>
-                  <li>
-                    <Link className="home_btn" href= {`/categories/Todas/${params.category_name.replace("-", ' ')}`}>
-                      {params.category_name.replace("-", ' ')}
-                    </Link>  
-                   </li>
+                              <li>
+                                <Link className="home_btn" href={`/categories/Todas/${p.category_name.replace("-", ' ')}`}>
+                                  {p.category_name.replace("-", ' ')}
+                                </Link>
+                               </li>
                   <li>{nombre_original}</li>
                 </ul>
               </div>
@@ -115,7 +117,7 @@ const Shop_details = async ({params}) => {
 
       <ProductCard fotos_carrusel={fotos_carrusel} producto={producto} allSizes={allSizes}/>
 
-      <RelatedProducts productosRelacionados={productosRelacionados} codigo={params.code}/>
+      <RelatedProducts productosRelacionados={productosRelacionados} codigo={p.code} />
 
     </main>
     </>
