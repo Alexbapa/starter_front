@@ -10816,6 +10816,8 @@ h1, h2, h3, h4, h5, h6 {
 .sd_color_list {
   margin: -5px;
 }
+
+/* thumbnails limiting removed: gallery items sliced in JS instead */
 .sd_color_list > li {
   padding: 5px;
 }
@@ -10845,14 +10847,14 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   color: #ffffff;
   font-size: 10px;
-  content: "";
-  font-weight: 400;
+  content: "\f00c";
+  font-weight: 900;
   position: absolute;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
- font-family: var(--font-din), sans-serif !important;
+  font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', sans-serif !important;
 }
 .sd_color_list input:checked:after {
   opacity: 1;
@@ -12432,16 +12434,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .accordion_primary button:before {
   color: #0033A0;
-  content: "";
-  font-weight: 400;
+  content: "\f067";
+  font-weight: 900;
   margin-right: 15px;
   display: inline-block;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
- font-family: var(--font-din), sans-serif !important;
+  font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', sans-serif !important;
 }
 .accordion_primary button[aria-expanded=true]:before {
-  content: "";
+  content: "\f068";
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
@@ -12478,6 +12480,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   display: inline-block;
   -webkit-transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', sans-serif !important;
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
  font-family: var(--font-din), sans-serif !important;
 }
@@ -19411,6 +19414,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidenav .closebtn:hover {
 	transform: rotate(90deg);
+}
+
+/* Mobile sidenav logo centered */
+.sidenav .mobile_logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.sidenav .mobile_logo img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
 }
 
 /* Títulos de sección */

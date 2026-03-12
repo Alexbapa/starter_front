@@ -56,6 +56,15 @@ const Contact = async () => {
                             <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
+                        <li>
+                          <a
+                            href="https://www.instagram.com/startermexico/?hl=es"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <i className="fab fa-instagram"></i>
+                          </a>
+                        </li>
                         {/*
                         <li><a href="#!"><i className="fab fa-twitter"></i></a></li>
                         <li><a href="#!"><i className="fab fa-skype"></i></a></li>

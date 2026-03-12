@@ -16,7 +16,7 @@ export async function Navbar() {
   const getSlogan = async () => {
     try {
       const res = await clienteAxios.get(`/empresa/single/658c57daea3c61d484acf6fb`);
-      //console.log(res.data)
+      console.log(res.data)
       return res.data.single.slogan;
       
     } catch (error) {
@@ -45,7 +45,7 @@ export async function Navbar() {
     <header className="header_section header_1">
         <div className="container width_desktop">
           <div className=" header_top">
-            <p className="welcome_text">Envios Gratis desde 2500 de compra</p>
+            <p className="welcome_text">{slogan}</p>
             <ul className="header_icons_list ul_li">
                 <li>
                 <a href="https://www.instagram.com/startermexico/?hl=es" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
@@ -56,7 +56,7 @@ export async function Navbar() {
                 </ul>
               </li>
               <li>
-                <a href="mailto:ecommerce@starter.com.mx"><i className="fas fa-envelope"></i></a>
+                <a href="mailto:contacto@starter-mx.com"><i className="fas fa-envelope"></i></a>
               </li>
               <li>
                 <a href="https://agencianuba.com/starter_panel" target="_blank" rel="noreferrer" className="user_account_btn"><i className="fas fa-user"></i> Login</a>

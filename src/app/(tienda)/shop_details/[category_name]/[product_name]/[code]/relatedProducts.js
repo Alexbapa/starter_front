@@ -20,7 +20,7 @@ export const RelatedProducts = ({ productosRelacionados, codigo }) => {
               )
               .map((item, index) => (
                 <div key={index} className="col-6 col-lg-3 col-md-4 col-sm-6">
-                  <ProductPreviewCard item={item}/>
+                  <ProductPreviewCard item={item} related={true} />
                 </div>
               ))}
         </div>

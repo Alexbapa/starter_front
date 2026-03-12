@@ -10,8 +10,7 @@ import { FacebookShareButton } from "react-share";
 import { toast } from "sonner";
 
 // Agregamos { item, darkMode = true } para que sea dinámico
-export const ProductPreviewCard = ({ item, darkMode = true }) => {
-  
+export const ProductPreviewCard = ({ item, darkMode = true, related = false }) => {
   const addCartItem = useCartStore((state) => state.add_cart_item);
   const { cart } = useCartStore();
 
@@ -204,19 +203,22 @@ export const ProductPreviewCard = ({ item, darkMode = true }) => {
 
         {/* INFO PRODUCTO - AQUI ESTÁ EL CAMBIO DINÁMICO */}
         <div className="shop_content">
-          <h3 className="shop_title" style={{ color: darkMode ? "#fff" : "#000" }}>
+          <h3 className="shop_title" style={{ color: related ? "#000000" : (darkMode ? "#fff" : "#000") }}>
             <Link 
-              style={{ color: darkMode ? "#fff" : "#000" }}
+              style={{ color: related ? "#000000" : (darkMode ? "#fff" : "#000") }}
               href={`/shop_details/${item.categoria.trim().replace(/\s/g, "-")}/${item.nombre.trim().replace(/\s/g, "-")}/${item.codigo}`}
             >
               {item.nombre}
             </Link>
           </h3>
-          <div className="shop_price">
-            <span className="sale_price" style={{ color: darkMode ? "#fff" : "#000" }}>
-              $ {item.precio}
-            </span>
-          </div>
+            <div className="shop_price">
+              <span
+                className="sale_price"
+                style={{ color: related ? "#000000" : (darkMode ? "#fff" : "#000") }}
+              >
+                $ {item.precio}
+              </span>
+            </div>
         </div>
       </div>
 

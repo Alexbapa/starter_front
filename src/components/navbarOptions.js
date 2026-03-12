@@ -10,6 +10,8 @@ import { useCartStore } from "../store/cart";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import logoStarter from "../images/logo/Logo_Starter_Redondo.png";
 
 export const NavbarOptions = ({ categories }) => {
   const { cart } = useCartStore(); //debe de ir aqui arriba por ser un hook y evitar errores
@@ -271,6 +273,9 @@ function closeNav() {
         >
           Contacto
         </Link>
+        <div className="mobile_logo">
+          <Image src={logoStarter} alt="Starter" width={90} height={90} />
+        </div>
       </div>
       
     </>

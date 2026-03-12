@@ -30,17 +30,18 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
   const [color, setColor] = useState();
   const [cantidad, setCantidad] = useState(1);
 
-  let images = []; 
- 
+  let images = [];
+
   for (let i = 0; i < fotos_carrusel.length; i++) {
-      images.push(
-      {
-        original: fotos_carrusel[i]["image"],
-        thumbnail: fotos_carrusel[i]["image"],
-        originalClass: "img-fluid",
-      },
-      );
+    images.push({
+      original: fotos_carrusel[i]["image"],
+      thumbnail: fotos_carrusel[i]["image"],
+      originalClass: "img-fluid",
+    });
   }
+
+  // Only pass up to 5 items to ImageGallery (thumbnails will correspond)
+  const galleryImages = images.slice(0, 5);
 
   const currentPageUrl =
     "https://starter.com.mx/shop_details/" +
@@ -200,8 +201,8 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
         <div className="row ">
           <div className="col col-lg-7 col-md-8">
             <div style={{paddingTop:"20px"}}>
-              <ImageGallery items={images} />
-            </div> 
+              <ImageGallery items={galleryImages} />
+            </div>
           </div>
 
           <div className="col col-lg-5 col-md-8">
