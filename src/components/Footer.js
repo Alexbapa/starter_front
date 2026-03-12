@@ -178,7 +178,7 @@ export async function Footer() {
         </div>
         <div className="footer_bottom">
           <div className="">
-            <p className="copyright_text text-center">© Todos los derechos reservados Satarter México desarrollado por <a href="https://gomalab.com" target="_blank" style={{color: "#0033A0"}}>GomaLab</a>
+            <p className="copyright_text text-center">© Todos los derechos reservados Starter México desarrollado por <a href="https://gomalab.com" target="_blank" style={{color: "#0033A0"}}>GomaLab</a>
             </p>
           </div>
         </div>
