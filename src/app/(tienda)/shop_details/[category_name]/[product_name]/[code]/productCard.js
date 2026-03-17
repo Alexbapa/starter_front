@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Link from "next/link";
 
@@ -29,6 +29,13 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
   const [talla, setTalla] = useState();
   const [color, setColor] = useState();
   const [cantidad, setCantidad] = useState(1);
+  const [galleryImagesState, setGalleryImagesState] = useState([]);
+  const galleryRef = useRef(null);
+
+  const normalizeColor = (c) => {
+    if (c === undefined || c === null) return "";
+    return String(c).replace(/#/g, "").toLowerCase();
+  };
 
   let images = [];
 
@@ -36,12 +43,26 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
     images.push({
       original: fotos_carrusel[i]["image"],
       thumbnail: fotos_carrusel[i]["image"],
+      color: fotos_carrusel[i]["color"] || fotos_carrusel[i].color,
       originalClass: "img-fluid",
     });
   }
 
   // Only pass up to 5 items to ImageGallery (thumbnails will correspond)
-  const galleryImages = images.slice(0, 5);
+  useEffect(() => {
+    setGalleryImagesState(images.slice(0, 5));
+  }, [fotos_carrusel]);
+
+  // When galleryImagesState changes, ensure gallery shows the first image
+  useEffect(() => {
+    try {
+      if (galleryRef.current && typeof galleryRef.current.slideToIndex === "function") {
+        galleryRef.current.slideToIndex(0);
+      }
+    } catch (err) {
+      console.log("Error sliding gallery:", err);
+    }
+  }, [galleryImagesState]);
 
   const currentPageUrl =
     "https://starter.com.mx/shop_details/" +
@@ -53,6 +74,38 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
 
   const handleColorChange = (codigo, label) => {
     setColor({ value: codigo, label: label });
+
+    // Map clicked color `value` to its hex (producto.color[].colorhexa) when available
+    let selectedHex = null;
+    try {
+      const found = producto && producto.color && producto.color.find((c) => String(c.value) === String(codigo));
+      if (found) {
+        selectedHex = found.colorhexa || found.color || found.hex || null;
+      }
+
+      const normCodigo = normalizeColor(selectedHex || codigo);
+
+      const matched = images.filter((img) => normalizeColor(img.color) === normCodigo);
+      // Only reorder when there's at least one exact match
+      if (matched.length > 0) {
+        const others = images.filter((img) => normalizeColor(img.color) !== normCodigo);
+        const newOrder = matched.concat(others).slice(0, 5);
+        setGalleryImagesState(newOrder);
+        return;
+      }
+
+      // Try partial matches as a second option
+      const partial = images.filter((img) => normalizeColor(img.color).includes(normCodigo) || normCodigo.includes(normalizeColor(img.color)));
+      if (partial.length > 0) {
+        setGalleryImagesState(partial.concat(images.filter(i => !partial.includes(i))).slice(0, 5));
+        return;
+      }
+
+      // No matches: keep existing gallery order (do nothing)
+      console.log("No gallery images match selected color; keeping current order.");
+    } catch (err) {
+      console.log("Error reordering gallery images:", err);
+    }
   };
 
   const getStock = async (size, colour) => {
@@ -201,7 +254,7 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
         <div className="row ">
           <div className="col col-lg-7 col-md-8">
             <div style={{paddingTop:"20px"}}>
-              <ImageGallery items={galleryImages} />
+              <ImageGallery ref={galleryRef} items={galleryImagesState} />
             </div>
           </div>
 
@@ -234,6 +287,8 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
                       <li key={index}>
                         <input
                           style={{ backgroundColor: item.colorhexa }}
+                          value={item.value}
+                          checked={color && color.value === item.value}
                           onChange={() =>
                             handleColorChange(item.value, item.label)
                           }

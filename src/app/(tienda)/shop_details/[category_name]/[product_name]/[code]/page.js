@@ -65,6 +65,7 @@ const Shop_details = async ({ params }) => {
       allSizes = res.data.single[0].talla
 
       fotos_carrusel = res.data.single[0].fotos_carrusel
+      console.log(fotos_carrusel);
           
       productosRelacionados = res.data.related_products
       
