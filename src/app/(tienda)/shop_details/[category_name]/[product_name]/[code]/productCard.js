@@ -75,7 +75,7 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
   const handleColorChange = (codigo, label) => {
     setColor({ value: codigo, label: label });
 
-    // Map clicked color `value` to its hex (producto.color[].colorhexa) when available
+    // Buscar el color seleccionado en la lista de colores del producto
     let selectedHex = null;
     try {
       const found = producto && producto.color && producto.color.find((c) => String(c.value) === String(codigo));
@@ -85,26 +85,19 @@ export const ProductCard = ({ fotos_carrusel, producto, allSizes }) => {
 
       const normCodigo = normalizeColor(selectedHex || codigo);
 
+      // Filtrar solo las imágenes que correspondan exactamente al color seleccionado
       const matched = images.filter((img) => normalizeColor(img.color) === normCodigo);
-      // Only reorder when there's at least one exact match
       if (matched.length > 0) {
-        const others = images.filter((img) => normalizeColor(img.color) !== normCodigo);
-        const newOrder = matched.concat(others).slice(0, 5);
-        setGalleryImagesState(newOrder);
+        setGalleryImagesState(matched);
         return;
       }
 
-      // Try partial matches as a second option
-      const partial = images.filter((img) => normalizeColor(img.color).includes(normCodigo) || normCodigo.includes(normalizeColor(img.color)));
-      if (partial.length > 0) {
-        setGalleryImagesState(partial.concat(images.filter(i => !partial.includes(i))).slice(0, 5));
-        return;
-      }
-
-      // No matches: keep existing gallery order (do nothing)
-      console.log("No gallery images match selected color; keeping current order.");
+      // Si no hay imágenes para ese color, no hacer nada
+      // (la galería se queda igual)
+      // Opcional: puedes mostrar un mensaje si quieres
+      // toast("No hay imágenes para este color");
     } catch (err) {
-      console.log("Error reordering gallery images:", err);
+      console.log("Error filtrando imágenes de galería por color:", err);
     }
   };
 
